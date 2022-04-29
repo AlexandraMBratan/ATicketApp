@@ -1,18 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
-    <TextView
+    <LinearLayout
+        android:id="@+id/layout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true">
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A"
+            android:layout_marginTop="20dp"
+            android:textColor="#9372C3"
+            android:textSize="40pt" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="154dp"
+            android:layout_height="137dp"
+            android:layout_alignLeft="@+id/text1"
+            android:src="@drawable/ticket1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout1"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign In"
+            android:layout_gravity="center"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:layout_marginTop="40dp"/>
+
+        <EditText
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:hint="Email"
+            android:textSize="25dp"
+            android:backgroundTint="#9372C3"
+            android:textCursorDrawable="@drawable/text_cursor"/>
+
+    <EditText
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="#9372C3"
+        android:hint="Parola"
+        android:textSize="25dp"
+        android:textCursorDrawable="@drawable/text_cursor"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ati uitat parola?"
+            android:textSize="20dp"
+            android:layout_gravity="end"/>
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="#9372C3"
+            android:text="Conecteza-te"
+            android:textSize="18dp"
+            />
+
+        <TextView
+            android:id="@+id/register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Creeaza cont"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+</RelativeLayout>

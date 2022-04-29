@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/drawable/button_style.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/drawable/text_cursor.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/activity_register_user.xml" value="0.1" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/activity_splash_screen.xml" value="0.1" />
       </map>
     </option>
