@@ -10,11 +10,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Locale;
 
@@ -128,6 +130,24 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                         if(task.isSuccessful()){
                             User user = new User(surname,name,age,phone,postalCode,email,password);
 
+
+                            FirebaseDatabase.getInstance().getReference("Users")
+                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                    .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful()){
+                                        Toast.makeText(RegisterUser.this, "User-ul a fost inregistrat cu succes", Toast.LENGTH_LONG).show();
+
+                                        //redirect to LoginLayout!
+                                    }else{
+                                        Toast.makeText(RegisterUser.this, "Inregistrarea a esuat! Incercati din nou.", Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            });
+
+                        }else{
+                            Toast.makeText(RegisterUser.this, "Inregistrarea a esuat! Incercati din nou.", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
