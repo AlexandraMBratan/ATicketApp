@@ -38,6 +38,7 @@
         android:layout_centerHorizontal="true">
 
         <TextView
+            android:id="@+id/title1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sign In"
@@ -47,6 +48,7 @@
             android:layout_marginTop="40dp"/>
 
         <EditText
+            android:id="@+id/email"
             android:layout_width="380dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
@@ -56,6 +58,7 @@
             android:textCursorDrawable="@drawable/text_cursor"/>
 
     <EditText
+        android:id="@+id/password"
         android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -65,12 +68,14 @@
         android:textCursorDrawable="@drawable/text_cursor"/>
 
         <TextView
+            android:id="@+id/forgotPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ati uitat parola?"
             android:textSize="20dp"
             android:layout_gravity="end"/>
         <Button
+            android:id="@+id/signin"
             android:layout_width="250dp"
             android:layout_height="60dp"
             android:layout_gravity="center"

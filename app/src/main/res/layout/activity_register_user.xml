@@ -14,6 +14,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/title2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Inregistreaza-te"
@@ -23,6 +24,7 @@
             android:layout_gravity="center_horizontal"/>
 
         <EditText
+            android:id="@+id/surname"
             android:layout_width="380dp"
             android:layout_height="wrap_content"
             android:hint="Nume"
@@ -32,6 +34,7 @@
             android:textCursorDrawable="@drawable/text_cursor"/>
 
         <EditText
+            android:id="@+id/name"
             android:layout_width="380dp"
             android:layout_height="wrap_content"
             android:hint="Prenume"
@@ -41,6 +44,7 @@
             android:textCursorDrawable="@drawable/text_cursor"/>
 
         <EditText
+            android:id="@+id/age"
             android:layout_width="380dp"
             android:layout_height="wrap_content"
             android:hint="Varsta"
@@ -50,6 +54,7 @@
             android:textCursorDrawable="@drawable/text_cursor"/>
 
         <EditText
+            android:id="@+id/phone"
             android:layout_width="380dp"
             android:layout_height="wrap_content"
             android:hint="Telefon"
@@ -59,6 +64,7 @@
             android:textCursorDrawable="@drawable/text_cursor"/>
 
         <EditText
+            android:id="@+id/postalCode"
             android:layout_width="380dp"
             android:layout_height="wrap_content"
             android:hint="Cod postal"
@@ -68,6 +74,7 @@
             android:textCursorDrawable="@drawable/text_cursor"/>
 
         <EditText
+            android:id="@+id/email"
             android:layout_width="380dp"
             android:layout_height="wrap_content"
             android:hint="Email"
@@ -77,6 +84,7 @@
             android:textCursorDrawable="@drawable/text_cursor"/>
 
         <EditText
+            android:id="@+id/password"
             android:layout_width="380dp"
             android:layout_height="wrap_content"
             android:hint="Parola"
@@ -86,6 +94,7 @@
             android:textCursorDrawable="@drawable/text_cursor"/>
 
         <Button
+            android:id="@+id/registerUser"
             android:layout_width="250dp"
             android:layout_height="60dp"
             android:layout_gravity="center"

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "538066004927",
+    "project_id": "aticketapp-ddd72",
+    "storage_bucket": "aticketapp-ddd72.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:538066004927:android:10e53f843567b2db9c0f0a",
+        "android_client_info": {
+          "package_name": "com.example.aticketapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "538066004927-dsfilf4d389unqd05khosh5dm79okm85.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAU_TgLwQXMGGNigqASLyvDxDEBDXJ9X_k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "538066004927-dsfilf4d389unqd05khosh5dm79okm85.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
