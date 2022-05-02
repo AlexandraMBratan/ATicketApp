@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:context=".RegisterUser"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Inregistreaza-te"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center_horizontal"/>
+
+        <EditText
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:hint="Nume"
+            android:layout_marginTop="80dp"
+            android:textSize="25dp"
+            android:backgroundTint="#9372C3"
+            android:textCursorDrawable="@drawable/text_cursor"/>
+
+        <EditText
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:hint="Prenume"
+            android:layout_marginTop="40dp"
+            android:textSize="25dp"
+            android:backgroundTint="#9372C3"
+            android:textCursorDrawable="@drawable/text_cursor"/>
+
+        <EditText
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:hint="Varsta"
+            android:layout_marginTop="40dp"
+            android:textSize="25dp"
+            android:backgroundTint="#9372C3"
+            android:textCursorDrawable="@drawable/text_cursor"/>
+
+        <EditText
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:hint="Telefon"
+            android:layout_marginTop="40dp"
+            android:textSize="25dp"
+            android:backgroundTint="#9372C3"
+            android:textCursorDrawable="@drawable/text_cursor"/>
+
+        <EditText
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:hint="Cod postal"
+            android:layout_marginTop="40dp"
+            android:textSize="25dp"
+            android:backgroundTint="#9372C3"
+            android:textCursorDrawable="@drawable/text_cursor"/>
+
+        <EditText
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:layout_marginTop="40dp"
+            android:textSize="25dp"
+            android:backgroundTint="#9372C3"
+            android:textCursorDrawable="@drawable/text_cursor"/>
+
+        <EditText
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:hint="Parola"
+            android:layout_marginTop="40dp"
+            android:textSize="25dp"
+            android:backgroundTint="#9372C3"
+            android:textCursorDrawable="@drawable/text_cursor"/>
+
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="#9372C3"
+            android:text="Creeaza cont"
+            android:textSize="18dp"
+            android:layout_marginBottom="5dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/login"
+            android:text="Am deja un cont"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="40dp"/>
+
+    </LinearLayout>
+</ScrollView>
