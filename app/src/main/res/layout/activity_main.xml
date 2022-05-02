@@ -52,6 +52,7 @@
             android:layout_width="380dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
+            android:inputType="textEmailAddress"
             android:hint="Email"
             android:textSize="25dp"
             android:backgroundTint="#9372C3"
@@ -63,6 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:backgroundTint="#9372C3"
+        android:inputType="textPassword"
         android:hint="Parola"
         android:textSize="25dp"
         android:textCursorDrawable="@drawable/text_cursor"/>
@@ -71,7 +73,7 @@
             android:id="@+id/forgotPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ati uitat parola?"
+            android:text="Ai uitat parola?"
             android:textSize="20dp"
             android:layout_gravity="end"/>
         <Button
