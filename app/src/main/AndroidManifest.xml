@@ -10,9 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ATicketApp">
         <activity
+            android:name=".AdminNavDrawerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminHomePageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserHomePageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ForgotPassword"
+            android:exported="false" />
+        <activity
             android:name=".RegisterUser"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true"
@@ -25,7 +36,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

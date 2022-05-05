@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -40,11 +41,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         editTextPassword = (EditText) findViewById(R.id.password);
 
         mAuth = FirebaseAuth.getInstance();
+
+        forgotPassword = (TextView) findViewById(R.id.forgotPassword);
+        forgotPassword.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
+            case R.id.forgotPassword:
+                startActivity(new Intent(this,ForgotPassword.class));
+                break;
             case R.id.signin:
                 userLogin();
                 break;
@@ -86,10 +93,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     if(email.equals("admin@yahoo.com")){
                         Toast.makeText(MainActivity.this, "Admin sign in", Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(MainActivity.this, AdminHomePageActivity.class));
                     }else{
-                        Toast.makeText(MainActivity.this,"User sign in", Toast.LENGTH_LONG).show();
+                        if(user.isEmailVerified()){
+                            Toast.makeText(MainActivity.this,"User sign in", Toast.LENGTH_LONG).show();
+                            //startActivity(new Intent(MainActivity.this, UserHomePageActivity.class));
+                        }else{
+                            user.sendEmailVerification();
+                            Toast.makeText(MainActivity.this,"Verifica email-ul pentru autentificare!", Toast.LENGTH_LONG).show();
+                        }
                     }
                 }else{
                     Toast.makeText(MainActivity.this, "Eroare la autentificare!", Toast.LENGTH_LONG).show();
