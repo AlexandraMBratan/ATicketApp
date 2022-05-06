@@ -4,6 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/drawable/button_style.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/drawable/ic_events.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/drawable/ic_home.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/drawable/ic_profile.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/drawable/text_cursor.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/activity_admin_home_page.xml" value="0.14356884057971014" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/activity_admin_nav_drawer.xml" value="0.1" />
@@ -12,8 +16,11 @@
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/activity_register_user.xml" value="0.1" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/activity_splash_screen.xml" value="0.1" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/activity_user_home_page.xml" value="0.14356884057971014" />
+        <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/activity_user_nav_drawer.xml" value="0.1" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/admin_drawer_header.xml" value="0.13858695652173914" />
+        <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/user_drawer_header.xml" value="0.1" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/menu/admin_drawer_menu.xml" value="0.1796875" />
+        <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/menu/user_drawer_menu.xml" value="0.1796875" />
       </map>
     </option>
   </component>

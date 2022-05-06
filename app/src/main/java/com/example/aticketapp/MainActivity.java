@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }else{
                         if(user.isEmailVerified()){
                             Toast.makeText(MainActivity.this,"User sign in", Toast.LENGTH_LONG).show();
-                            //startActivity(new Intent(MainActivity.this, UserHomePageActivity.class));
+                            startActivity(new Intent(MainActivity.this, UserHomePageActivity.class));
                         }else{
                             user.sendEmailVerification();
                             Toast.makeText(MainActivity.this,"Verifica email-ul pentru autentificare!", Toast.LENGTH_LONG).show();

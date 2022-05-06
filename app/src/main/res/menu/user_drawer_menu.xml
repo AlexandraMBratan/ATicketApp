@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home_user"
+            android:icon="@drawable/ic_home"
+            android:title="Acasa" />
+        <item
+            android:id="@+id/nav_myevents_user"
+            android:icon="@drawable/ic_events"
+            android:title="Evenimentele mele" />
+        <item
+            android:id="@+id/nav_profil_user"
+            android:icon="@drawable/ic_profile"
+            android:title="Profilul meu" />
+        <item
+            android:id="@+id/nav_logout_user"
+            android:icon="@drawable/ic_logout"
+            android:title="Deconectare" />
+    </group>
+
+</menu>

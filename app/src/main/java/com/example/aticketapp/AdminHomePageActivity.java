@@ -8,13 +8,13 @@ import com.example.aticketapp.databinding.ActivityAdminHomePageBinding;
 
 public class AdminHomePageActivity extends AdminNavDrawerActivity {
 
-    ActivityAdminHomePageBinding activityDashbordBinding;
+    ActivityAdminHomePageBinding activityAdminHomePageBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activityDashbordBinding =  ActivityAdminHomePageBinding.inflate(getLayoutInflater());
-        setContentView(activityDashbordBinding.getRoot());
+        activityAdminHomePageBinding =  ActivityAdminHomePageBinding.inflate(getLayoutInflater());
+        setContentView(activityAdminHomePageBinding.getRoot());
         setActionBarTitle("Home");
     }
 }

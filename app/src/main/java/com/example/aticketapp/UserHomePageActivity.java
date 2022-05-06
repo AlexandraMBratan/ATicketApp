@@ -4,11 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class UserHomePageActivity extends AppCompatActivity {
+import com.example.aticketapp.databinding.ActivityUserHomePageBinding;
+
+public class UserHomePageActivity extends UserNavDrawerActivity {
+
+    ActivityUserHomePageBinding activityUserHomePageBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_home_page);
+        activityUserHomePageBinding = ActivityUserHomePageBinding.inflate(getLayoutInflater());
+        setContentView(activityUserHomePageBinding.getRoot());
+        setActionBarTitle("Home");
     }
+
 }
