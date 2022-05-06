@@ -8,8 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.denzcoskun.imageslider.ImageSlider;
-import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.aticketapp.databinding.ActivityAdminHomePageBinding;
 
 import java.util.ArrayList;
@@ -26,8 +24,6 @@ public class AdminHomePageActivity extends AdminNavDrawerActivity {
         activityAdminHomePageBinding =  ActivityAdminHomePageBinding.inflate(getLayoutInflater());
         setContentView(activityAdminHomePageBinding.getRoot());
         setActionBarTitle("Home");
-
-        ImageSlider imageSlider = (ImageSlider) findViewById(R.id.slider);
 
         cardConcertAdmin = (CardView) findViewById(R.id.cardConcerteAdmin);
         cardFestivalAdmin = (CardView) findViewById(R.id.cardFestivalAdmin);

@@ -164,20 +164,5 @@
 
     </LinearLayout>
 
- <LinearLayout
-     android:layout_width="match_parent"
-     android:layout_height="match_parent">
 
-     <com.denzcoskun.imageslider.ImageSlider
-         android:layout_width="match_parent"
-         android:layout_height="200dp"
-         app:auto_cycle="true"
-         app:delay="0"
-         app:period="3000"
-         android:id="@+id/slider"
-         app:iss_corner_radius="20"
-         android:layout_margin="20dp"
-         />
-
- </LinearLayout>
 </ScrollView>
