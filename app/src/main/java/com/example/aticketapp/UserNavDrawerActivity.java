@@ -2,11 +2,13 @@ package com.example.aticketapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -105,11 +107,32 @@ public class UserNavDrawerActivity extends AppCompatActivity implements Navigati
                 break;
             case R.id.nav_logout_user:
                 Toast.makeText(UserNavDrawerActivity.this, "LogOut User", Toast.LENGTH_LONG).show();
-                //logOut(this);
+                logOut(this);
                 break;
         }
         drawerLayoutUser.closeDrawer(GravityCompat.START);
         return false;
+    }
+
+    private void logOut(UserNavDrawerActivity logout) {
+        AlertDialog.Builder builder=new AlertDialog.Builder(logout);
+        builder.setTitle("Deconectare");
+        builder.setMessage("Sunteti sigur ca doriti sa va deconectati?");
+        builder.setPositiveButton("DA", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                logout.finishAffinity();
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(UserNavDrawerActivity.this,MainActivity.class));
+            }
+        });
+        builder.setNegativeButton("NU", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        builder.show();
     }
 
     public void setActionBarTitle(String title){
