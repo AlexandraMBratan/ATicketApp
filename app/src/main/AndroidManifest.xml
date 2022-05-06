@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ATicketApp">
         <activity
+            android:name=".UserNavDrawerActivity"
+            android:exported="false" />
+        <activity
             android:name=".AdminNavDrawerActivity"
             android:exported="false" />
         <activity
