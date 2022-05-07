@@ -139,6 +139,11 @@ public class AdminAddEventPageActivity extends AdminNavDrawerActivity {
                                     newPost.child("cantitate").setValue(quantity);
                                     newPost.child("imagine").setValue(task.getResult().toString());
                                     progressDialog.dismiss();
+
+                                    Intent intent = new Intent(AdminAddEventPageActivity.this, AdminEventsListPageActivity.class);
+                                    startActivity(intent);
+
+
                                 }
                             });
                         }

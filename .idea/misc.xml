@@ -10,6 +10,7 @@
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/drawable/ic_profile.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/drawable/text_cursor.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/activity_admin_add_event_page.xml" value="0.1" />
+        <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/activity_admin_events_list_page.xml" value="0.1" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/activity_admin_home_page.xml" value="0.1" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/activity_admin_nav_drawer.xml" value="0.1" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/activity_forgot_password.xml" value="0.1" />
@@ -19,6 +20,7 @@
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/activity_user_home_page.xml" value="0.14356884057971014" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/activity_user_nav_drawer.xml" value="0.1" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/admin_drawer_header.xml" value="0.13858695652173914" />
+        <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/design_row_event_list_admin.xml" value="0.1" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/list_item.xml" value="0.1" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/user_drawer_header.xml" value="0.1" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/menu/admin_drawer_menu.xml" value="0.1796875" />
