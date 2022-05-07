@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminAddEventPageActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Adauga un eveniment"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center_horizontal"/>
+
+        <ImageButton
+            android:id="@+id/imageEvent"
+            android:layout_width="300dp"
+            android:layout_height="172dp"
+            android:layout_marginTop="40dp"
+            android:layout_gravity="center_horizontal"/>
+
+        <EditText
+            android:id="@+id/numeEvent"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="Nume eveniment"
+            android:layout_marginTop="40dp"
+            android:textSize="25dp"
+            android:backgroundTint="#9372C3"
+            android:textCursorDrawable="@drawable/text_cursor"/>
+
+        <EditText
+            android:id="@+id/artistEvent"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="Artist"
+            android:layout_marginTop="40dp"
+            android:textSize="25dp"
+            android:backgroundTint="#9372C3"
+            android:textCursorDrawable="@drawable/text_cursor"/>
+
+        <EditText
+            android:id="@+id/typeEvent"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="Tip eveniment"
+            android:layout_marginTop="40dp"
+            android:textSize="25dp"
+            android:backgroundTint="#9372C3"
+            android:textCursorDrawable="@drawable/text_cursor"/>
+
+
+
+        <EditText
+            android:id="@+id/dateEvent"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="Data"
+            android:layout_marginTop="40dp"
+            android:textSize="25dp"
+            android:backgroundTint="#9372C3"
+            android:textCursorDrawable="@drawable/text_cursor"/>
+
+        <EditText
+            android:id="@+id/timeEvent"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="Ora"
+            android:layout_marginTop="40dp"
+            android:textSize="25dp"
+            android:backgroundTint="#9372C3"
+            android:textCursorDrawable="@drawable/text_cursor"/>
+
+        <EditText
+            android:id="@+id/locationEvent"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="Locatie"
+            android:layout_marginTop="40dp"
+            android:textSize="25dp"
+            android:backgroundTint="#9372C3"
+            android:textCursorDrawable="@drawable/text_cursor"/>
+
+        <EditText
+            android:id="@+id/priceEvent"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="Pret bilet"
+            android:layout_marginTop="40dp"
+            android:textSize="25dp"
+            android:backgroundTint="#9372C3"
+            android:textCursorDrawable="@drawable/text_cursor"/>
+
+        <EditText
+            android:id="@+id/totalQuantityEvent"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="Nr total bilete"
+            android:layout_marginTop="40dp"
+            android:textSize="25dp"
+            android:backgroundTint="#9372C3"
+            android:textCursorDrawable="@drawable/text_cursor"/>
+
+        <Button
+            android:id="@+id/addEvent"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="#9372C3"
+            android:text="Adauga eveniment"
+            android:textSize="18dp"
+            android:layout_marginBottom="40dp"/>
+    </LinearLayout>
+
+</ScrollView>
