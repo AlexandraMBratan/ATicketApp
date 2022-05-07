@@ -70,7 +70,7 @@ public class AdminNavDrawerActivity extends AppCompatActivity implements Navigat
                 break;
             case R.id.nav_addevent_admin:
                 Toast.makeText(AdminNavDrawerActivity.this, "Add Events - Admin", Toast.LENGTH_LONG).show();
-                //startActivity(new Intent(this,AdminHomePageActivity.class));
+                startActivity(new Intent(this,AdminAddEventPageActivity.class));
                 overridePendingTransition(0,0);
                 break;
             case R.id.nav_logout_admin:
