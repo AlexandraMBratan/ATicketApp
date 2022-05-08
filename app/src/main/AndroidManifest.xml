@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ATicketApp">
         <activity
+            android:name=".AdminUsersListPageActivity"
+            android:exported="false" />
+        <activity
             android:name=".AdminEventsListPageActivity"
             android:exported="false" />
         <activity

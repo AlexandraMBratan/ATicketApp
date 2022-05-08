@@ -78,6 +78,11 @@ public class AdminNavDrawerActivity extends AppCompatActivity implements Navigat
                 startActivity(new Intent(this,AdminEventsListPageActivity.class));
                 overridePendingTransition(0,0);
                 break;
+            case R.id.nav_userslist_admin:
+                Toast.makeText(AdminNavDrawerActivity.this, "Users List - Admin", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(this,AdminUsersListPageActivity.class));
+                overridePendingTransition(0,0);
+                break;
             case R.id.nav_logout_admin:
                 Toast.makeText(AdminNavDrawerActivity.this, "LogOut Admin", Toast.LENGTH_LONG).show();
                 logOut(this);

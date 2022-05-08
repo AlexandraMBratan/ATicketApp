@@ -17,6 +17,10 @@
             android:icon="@drawable/ic_events"
             android:title="Lista de evenimente" />
         <item
+            android:id="@+id/nav_userslist_admin"
+            android:icon="@drawable/ic_users"
+            android:title="Lista cu utilizatori" />
+        <item
             android:id="@+id/nav_logout_admin"
             android:icon="@drawable/ic_logout"
             android:title="Deconectare" />
