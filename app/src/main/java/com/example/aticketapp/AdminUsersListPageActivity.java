@@ -7,7 +7,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.SearchView;
 
 import com.example.aticketapp.databinding.ActivityAdminUsersListPageBinding;
 import com.google.firebase.database.ChildEventListener;
@@ -28,7 +32,7 @@ public class AdminUsersListPageActivity extends AdminNavDrawerActivity {
     DatabaseReference mRef;
     RecyclerView recyclerView;
     AdminUserAdapter adminUserAdapter;
-    List<User> userAdminList;
+    ArrayList<User> userAdminList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,5 +80,28 @@ public class AdminUsersListPageActivity extends AdminNavDrawerActivity {
 
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_item, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.search_action);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                adminUserAdapter.getFilter().filter(s);
+                return false;
+            }
+        });
+        return true;
     }
 }

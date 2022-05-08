@@ -9,8 +9,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.aticketapp.databinding.ActivityAdminEventsListPageBinding;
@@ -27,6 +30,7 @@ import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class AdminEventsListPageActivity extends AdminNavDrawerActivity{
 
@@ -46,7 +50,6 @@ public class AdminEventsListPageActivity extends AdminNavDrawerActivity{
         activityAdminEventsListPageBinding = ActivityAdminEventsListPageBinding.inflate(getLayoutInflater());
         setContentView(activityAdminEventsListPageBinding.getRoot());
         setActionBarTitle("Event List");
-
 
         mDatabase = FirebaseDatabase.getInstance();
         mRef = mDatabase.getReference().child("Evenimente");
@@ -93,6 +96,34 @@ public class AdminEventsListPageActivity extends AdminNavDrawerActivity{
             }
         });
 
+        EditText editTextSearch = findViewById(R.id.editTextSearch);
+        editTextSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                filter(editable.toString());
+            }
+        });
+    }
+
+    private void filter(String text){
+        ArrayList<Event> filteredList = new ArrayList<>();
+
+        for(Event item : eventAdminList){
+            if(item.getNumeEveniment().toLowerCase().contains(text.toLowerCase())){
+                filteredList.add(item);
+            }
+        }
+        adminAdapter.filterList(filteredList);
     }
 
 }
