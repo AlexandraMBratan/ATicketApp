@@ -24,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.ViewHolder> {
@@ -119,5 +120,10 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.ViewHolder> 
            deleteButton = (Button) itemView.findViewById(R.id.deleteEventAdmin);
         }
 
+    }
+
+    public void filterList(ArrayList<Event> filteredList){
+        eventList= filteredList;
+        notifyDataSetChanged();
     }
 }
