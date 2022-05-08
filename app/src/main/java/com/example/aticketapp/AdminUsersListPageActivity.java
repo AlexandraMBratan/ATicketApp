@@ -2,74 +2,58 @@ package com.example.aticketapp;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
-import com.example.aticketapp.databinding.ActivityAdminEventsListPageBinding;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
+import com.example.aticketapp.databinding.ActivityAdminUsersListPageBinding;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdminEventsListPageActivity extends AdminNavDrawerActivity{
+public class AdminUsersListPageActivity extends AdminNavDrawerActivity {
 
-    ActivityAdminEventsListPageBinding activityAdminEventsListPageBinding;
+    ActivityAdminUsersListPageBinding activityAdminUsersListPageBinding;
 
     FirebaseDatabase mDatabase;
     DatabaseReference mRef;
-    FirebaseStorage mStorage;
     RecyclerView recyclerView;
-    AdminAdapter adminAdapter;
-    List<Event> eventAdminList;
-    Button updateEvent, deleteEvent;
+    AdminUserAdapter adminUserAdapter;
+    List<User> userAdminList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activityAdminEventsListPageBinding = ActivityAdminEventsListPageBinding.inflate(getLayoutInflater());
-        setContentView(activityAdminEventsListPageBinding.getRoot());
-        setActionBarTitle("Event List");
-
+        activityAdminUsersListPageBinding = ActivityAdminUsersListPageBinding.inflate(getLayoutInflater());
+        setContentView(activityAdminUsersListPageBinding.getRoot());
+        setActionBarTitle("User List");
 
         mDatabase = FirebaseDatabase.getInstance();
-        mRef = mDatabase.getReference().child("Evenimente");
-        mStorage = FirebaseStorage.getInstance();
-        //String id= mRef.getKey();
+        mRef = mDatabase.getReference().child("Users");
 
-        recyclerView = findViewById(R.id.eventslist_admin);
+        recyclerView = findViewById(R.id.userslist_admin);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        updateEvent = (Button) findViewById(R.id.updateEventAdmin);
-        deleteEvent = (Button) findViewById(R.id.deleteEventAdmin);
-
-        eventAdminList = new ArrayList<Event>();
-        adminAdapter = new AdminAdapter(AdminEventsListPageActivity.this,eventAdminList);
-        recyclerView.setAdapter(adminAdapter);
+        userAdminList = new ArrayList<User>();
+        adminUserAdapter = new AdminUserAdapter(AdminUsersListPageActivity.this,userAdminList);
+        recyclerView.setAdapter(adminUserAdapter);
 
         mRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                Event event = snapshot.getValue(Event.class);
-                eventAdminList.add(event);
-                adminAdapter.notifyDataSetChanged();
+                User user = snapshot.getValue(User.class);
+                userAdminList.add(user);
+                adminUserAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -92,7 +76,5 @@ public class AdminEventsListPageActivity extends AdminNavDrawerActivity{
 
             }
         });
-
     }
-
 }
