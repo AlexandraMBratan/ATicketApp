@@ -102,7 +102,7 @@ public class UserNavDrawerActivity extends AppCompatActivity implements Navigati
                 break;
             case R.id.nav_profil_user:
                 Toast.makeText(UserNavDrawerActivity.this, "Profile User", Toast.LENGTH_LONG).show();
-                //startActivity(new Intent(this,AdminHomePageActivity.class));
+                startActivity(new Intent(this,UserMyProfilePageActivity.class));
                 overridePendingTransition(0,0);
                 break;
             case R.id.nav_logout_user:
