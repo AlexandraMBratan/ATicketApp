@@ -82,7 +82,7 @@ public class UserMyProfilePageActivity extends UserNavDrawerActivity {
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //startActivity(new Intent(this,UserUpdateProfilePageActivity.class));
+                startActivity(new Intent(UserMyProfilePageActivity.this,UserUpdateProfilePageActivity.class));
                 Toast.makeText(UserMyProfilePageActivity.this, "Update profile" , Toast.LENGTH_LONG).show();
             }
         });
