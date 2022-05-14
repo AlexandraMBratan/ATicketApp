@@ -34,7 +34,7 @@ public class AdminHomePageActivity extends AdminNavDrawerActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(AdminHomePageActivity.this, "Concerts Page", Toast.LENGTH_LONG).show();
-                //startActivity(new Intent(this,ConcertPageAdmin.class));
+                startActivity(new Intent(AdminHomePageActivity.this,AdminConcertsListPageActivity.class));
             }
         });
 

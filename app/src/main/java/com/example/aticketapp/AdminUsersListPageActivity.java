@@ -7,11 +7,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.example.aticketapp.databinding.ActivityAdminUsersListPageBinding;
 import com.google.firebase.database.ChildEventListener;
@@ -23,6 +25,7 @@ import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class AdminUsersListPageActivity extends AdminNavDrawerActivity {
 
@@ -32,7 +35,8 @@ public class AdminUsersListPageActivity extends AdminNavDrawerActivity {
     DatabaseReference mRef;
     RecyclerView recyclerView;
     AdminUserAdapter adminUserAdapter;
-    ArrayList<User> userAdminList;
+    List<User> userAdminList;
+    androidx.appcompat.widget.SearchView searchUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +55,10 @@ public class AdminUsersListPageActivity extends AdminNavDrawerActivity {
         userAdminList = new ArrayList<User>();
         adminUserAdapter = new AdminUserAdapter(AdminUsersListPageActivity.this,userAdminList);
         recyclerView.setAdapter(adminUserAdapter);
+
+        searchUser = findViewById(R.id.searchUser_admin);
+        searchUser.clearFocus();
+        searchUser.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
 
         mRef.addChildEventListener(new ChildEventListener() {
             @Override
@@ -80,28 +88,42 @@ public class AdminUsersListPageActivity extends AdminNavDrawerActivity {
 
             }
         });
-    }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_item, menu);
 
-        MenuItem searchItem = menu.findItem(R.id.search_action);
-        SearchView searchView = (SearchView) searchItem.getActionView();
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        searchUser.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
             @Override
-            public boolean onQueryTextSubmit(String s) {
+            public boolean onQueryTextSubmit(String query) {
                 return false;
             }
 
             @Override
-            public boolean onQueryTextChange(String s) {
-                adminUserAdapter.getFilter().filter(s);
-                return false;
+            public boolean onQueryTextChange(String newText) {
+                filter(newText);
+                return true;
             }
         });
-        return true;
     }
+
+    private void filter(String text) {
+        List<User> filteredUserList = new ArrayList<>();
+        for(User itemUser : userAdminList){
+            if(itemUser.getNume().toLowerCase().contains(text.toLowerCase())){
+                filteredUserList.add(itemUser);
+            }else {
+                if (itemUser.getPrenume().toLowerCase().contains(text.toLowerCase())) {
+                    filteredUserList.add(itemUser);
+                }else{
+                    if(itemUser.getEmail().toLowerCase().contains(text.toLowerCase())){
+                        filteredUserList.add(itemUser);
+                    }
+                }
+            }
+        }
+        if(filteredUserList.isEmpty()){
+            Toast.makeText(AdminUsersListPageActivity.this, "Nu a fost gasit utilizatorul", Toast.LENGTH_LONG).show();
+        }else {
+            adminUserAdapter.filterUserList(filteredUserList);
+        }
+    }
+
 }

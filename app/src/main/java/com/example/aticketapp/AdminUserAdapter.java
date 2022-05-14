@@ -47,10 +47,10 @@ public class AdminUserAdapter extends RecyclerView.Adapter<AdminUserAdapter.View
             holder.txtTelefon.setText(user.getTelefon());
             holder.txtEmailUser.setText(user.getEmail());
         }else{
-            holder.txtNumeUser.setText(null);
-            holder.txtPrenumeUser.setText(null);
-            holder.txtTelefon.setText(null);
-            holder.txtEmailUser.setText(null);
+            holder.txtNumeUser.setText("admin");
+            holder.txtPrenumeUser.setText("admin");
+            holder.txtTelefon.setText("admin");
+            holder.txtEmailUser.setText("admin");
         }
     }
 
@@ -62,6 +62,11 @@ public class AdminUserAdapter extends RecyclerView.Adapter<AdminUserAdapter.View
     @Override
     public Filter getFilter() {
         return userFilter;
+    }
+
+    public void filterUserList(List<User> filteredUserList){
+        this.userList = filteredUserList;
+        notifyDataSetChanged();
     }
 
     private final Filter userFilter = new Filter() {
