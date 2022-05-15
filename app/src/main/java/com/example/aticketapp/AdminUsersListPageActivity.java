@@ -6,11 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -37,6 +39,7 @@ public class AdminUsersListPageActivity extends AdminNavDrawerActivity {
     AdminUserAdapter adminUserAdapter;
     List<User> userAdminList;
     androidx.appcompat.widget.SearchView searchUser;
+    private AdminUserAdapter.RecyclerViewInterface recyclerViewInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +56,8 @@ public class AdminUsersListPageActivity extends AdminNavDrawerActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         userAdminList = new ArrayList<User>();
-        adminUserAdapter = new AdminUserAdapter(AdminUsersListPageActivity.this,userAdminList);
+        setOnClickListner();
+        adminUserAdapter = new AdminUserAdapter(AdminUsersListPageActivity.this,userAdminList, recyclerViewInterface);
         recyclerView.setAdapter(adminUserAdapter);
 
         searchUser = findViewById(R.id.searchUser_admin);
@@ -99,9 +103,26 @@ public class AdminUsersListPageActivity extends AdminNavDrawerActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
                 filter(newText);
+                setOnClickListner();
                 return true;
             }
         });
+    }
+
+    private void setOnClickListner() {
+        recyclerViewInterface = new AdminUserAdapter.RecyclerViewInterface() {
+            @Override
+            public void onItemClick(View v, int position) {
+                Intent i = new Intent(getApplicationContext(), AdminUserDetailsPageActivity.class);
+                i.putExtra("nume", userAdminList.get(position).getNume());
+                i.putExtra("prenume", userAdminList.get(position).getPrenume());
+                i.putExtra("varsta", userAdminList.get(position).getVarsta());
+                i.putExtra("telefon", userAdminList.get(position).getTelefon());
+                i.putExtra("codPostal", userAdminList.get(position).getCodPostal());
+                i.putExtra("email", userAdminList.get(position).getEmail());
+                startActivity(i);
+            }
+        };
     }
 
     private void filter(String text) {

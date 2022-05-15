@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
@@ -42,6 +43,7 @@ public class AdminEventsListPageActivity extends AdminNavDrawerActivity{
     RecyclerView recyclerView;
     AdminAdapter adminAdapter;
     List<Event> eventAdminList;
+    androidx.appcompat.widget.SearchView searchEvent;
     Button updateEvent, deleteEvent;
 
     @Override
@@ -66,6 +68,11 @@ public class AdminEventsListPageActivity extends AdminNavDrawerActivity{
         eventAdminList = new ArrayList<Event>();
         adminAdapter = new AdminAdapter(AdminEventsListPageActivity.this,eventAdminList);
         recyclerView.setAdapter(adminAdapter);
+
+        searchEvent = findViewById(R.id.searchEvent_admin);
+        searchEvent.clearFocus();
+        searchEvent.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+
 
         mRef.addChildEventListener(new ChildEventListener() {
             @Override
@@ -96,34 +103,43 @@ public class AdminEventsListPageActivity extends AdminNavDrawerActivity{
             }
         });
 
-        EditText editTextSearch = findViewById(R.id.editTextSearch);
-        editTextSearch.addTextChangedListener(new TextWatcher() {
+        searchEvent.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+            public boolean onQueryTextSubmit(String query) {
+                return false;
             }
 
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                filter(editable.toString());
+            public boolean onQueryTextChange(String newText) {
+                filterEvent(newText);
+                //setOnClickListner();
+                return true;
             }
         });
+
     }
 
-    private void filter(String text){
-        ArrayList<Event> filteredList = new ArrayList<>();
 
-        for(Event item : eventAdminList){
-            if(item.getNumeEveniment().toLowerCase().contains(text.toLowerCase())){
-                filteredList.add(item);
+    private void filterEvent(String text) {
+        List<Event> filteredEventList = new ArrayList<>();
+        for(Event itemEvent : eventAdminList){
+            if(itemEvent.getNumeEveniment().toLowerCase().contains(text.toLowerCase())){
+                filteredEventList.add(itemEvent);
+            }else {
+                if (itemEvent.getArtist().toLowerCase().contains(text.toLowerCase())) {
+                    filteredEventList.add(itemEvent);
+                }else{
+                    if(itemEvent.getLocatie().toLowerCase().contains(text.toLowerCase())){
+                        filteredEventList.add(itemEvent);
+                    }
+                }
             }
         }
-        adminAdapter.filterList(filteredList);
+        if(filteredEventList.isEmpty()){
+            Toast.makeText(AdminEventsListPageActivity.this, "Nu a fost gasit utilizatorul", Toast.LENGTH_LONG).show();
+        }else {
+            adminAdapter.filterEventList(filteredEventList);
+        }
     }
 
 }

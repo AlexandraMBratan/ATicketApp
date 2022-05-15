@@ -7,11 +7,16 @@
     tools:context=".AdminEventsListPageActivity"
     android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/editTextSearch"
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchEvent_admin"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"/>
+        android:layout_height="60dp"
+        android:layout_margin="8dp"
+        app:queryHint="Cautare ..."
+        android:background="@drawable/search_view_style"
+        app:iconifiedByDefault="false">
+    </androidx.appcompat.widget.SearchView>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/eventslist_admin"
