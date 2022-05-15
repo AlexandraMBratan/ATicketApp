@@ -127,17 +127,11 @@ public class AdminAddEventPageActivity extends AdminNavDrawerActivity {
                                 public void onComplete(@NonNull Task<Uri> task) {
                                     String t = task.getResult().toString();
 
-                                    DatabaseReference newPost = mRef.push();
+                                    String id = mRef.push().getKey();
+                                    Event newEvent = new Event(id,name,artist,type,date,time,location,price,quantity,task.getResult().toString());
 
-                                    newPost.child("numeEveniment").setValue(name);
-                                    newPost.child("artist").setValue(artist);
-                                    newPost.child("tip").setValue(type);
-                                    newPost.child("data").setValue(date);
-                                    newPost.child("ora").setValue(time);
-                                    newPost.child("locatie").setValue(location);
-                                    newPost.child("pret").setValue(price);
-                                    newPost.child("cantitate").setValue(quantity);
-                                    newPost.child("imagine").setValue(task.getResult().toString());
+                                    mRef.child(id).setValue(newEvent);
+
                                     progressDialog.dismiss();
 
                                     Intent intent = new Intent(AdminAddEventPageActivity.this, AdminEventsListPageActivity.class);

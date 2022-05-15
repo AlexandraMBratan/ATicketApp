@@ -64,32 +64,26 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.ViewHolder> 
         holder.deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatabaseReference refData = FirebaseDatabase.getInstance().getReference().child("Evenimente");
-                refData.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        //Event eveniment= snapshot.getValue(Event.class);
-                        String id = snapshot.getKey();
-                        Task<Void> task = refData.child(id).removeValue();
-                        task.addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void unused) {
-                                Toast.makeText(holder.txtName.getContext(), "Evenimentul a fost sters!", Toast.LENGTH_LONG).show();
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(holder.txtName.getContext(), "Eroare la stergere!", Toast.LENGTH_LONG).show();
-                            }
-                        });
-                    }
+                AlertDialog.Builder builder = new AlertDialog.Builder(holder.txtName.getContext());
+                builder.setTitle("Sunteti sigur ca doriti sa stergeti evenimentul?");
+                DatabaseReference refData = FirebaseDatabase.getInstance().getReference().child("Evenimente").child(event.getIdEvent());
 
+                builder.setPositiveButton("Sterge", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //deleteEvent(String idEvent);
+                        refData.removeValue();
+                        Toast.makeText(holder.txtName.getContext(), "Evenimentul s-a sters", Toast.LENGTH_LONG).show();
 
                     }
                 });
-
+                builder.setNegativeButton("Inchide", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(holder.txtName.getContext(), "Nu s-a sters evenimentul", Toast.LENGTH_LONG).show();
+                    }
+                });
+                builder.show();
             }
         });
 
