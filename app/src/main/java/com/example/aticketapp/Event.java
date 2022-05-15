@@ -2,14 +2,15 @@ package com.example.aticketapp;
 
 public class Event {
 
-    public String numeEveniment, artist, tip, data, ora, locatie, pret, cantitateTotala;
+    public String idEvent,numeEveniment, artist, tip, data, ora, locatie, pret, cantitateTotala;
     public String imagine;
 
     public Event(){
 
     }
 
-    public Event(String numeEveniment, String artist, String tip, String data, String ora, String locatie, String pret, String cantitateTotala, String imagine) {
+    public Event(String idEvent ,String numeEveniment, String artist, String tip, String data, String ora, String locatie, String pret, String cantitateTotala, String imagine) {
+        this.idEvent = idEvent;
         this.numeEveniment = numeEveniment;
         this.artist = artist;
         this.tip = tip;
@@ -91,5 +92,9 @@ public class Event {
 
     public void setImagine(String imagine) {
         this.imagine = imagine;
+    }
+
+    public String getIdEvent(){
+        return idEvent;
     }
 }
