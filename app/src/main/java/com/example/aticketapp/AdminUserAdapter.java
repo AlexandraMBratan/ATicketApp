@@ -18,14 +18,16 @@ import java.util.Locale;
 
 public class AdminUserAdapter extends RecyclerView.Adapter<AdminUserAdapter.ViewHolder> implements Filterable {
 
-    Context context;
-    List<User> userList;
-    ArrayList<User> userListFull;
+    private Context context;
+    private List<User> userList;
+    private ArrayList<User> userListFull;
+    private RecyclerViewInterface rvInterface;
 
-    public AdminUserAdapter(Context context, List<User> userList) {
+    public AdminUserAdapter(Context context, List<User> userList, RecyclerViewInterface rvInterface) {
         this.context = context;
         this.userList = userList;
         userListFull = new ArrayList<>(userList);
+        this.rvInterface = rvInterface;
     }
 
     @NonNull
@@ -99,7 +101,7 @@ public class AdminUserAdapter extends RecyclerView.Adapter<AdminUserAdapter.View
         }
     };
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView txtNumeUser, txtPrenumeUser, txtTelefon,txtEmailUser;
         public ViewHolder(@NonNull View itemView) {
@@ -109,6 +111,17 @@ public class AdminUserAdapter extends RecyclerView.Adapter<AdminUserAdapter.View
             txtPrenumeUser = (TextView) itemView.findViewById(R.id.prenume_row_userslist_admin);
             txtTelefon = (TextView) itemView.findViewById(R.id.telefon_row_userslist_admin);
             txtEmailUser = (TextView) itemView.findViewById(R.id.email_row_userslist_admin);
+
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View view) {
+            rvInterface.onItemClick(view, getAbsoluteAdapterPosition());
+        }
+    }
+
+    public interface RecyclerViewInterface{
+        void onItemClick (View v, int position);
     }
 }

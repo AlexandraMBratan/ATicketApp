@@ -100,6 +100,12 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.ViewHolder> 
         return eventList.size();
     }
 
+    public void filterEventList(List<Event> filteredEventList){
+        this.eventList = filteredEventList;
+        notifyDataSetChanged();
+    }
+
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageEv;
         TextView txtName, txtArtist, txtLocation, txtDate,txtTime;
@@ -122,8 +128,4 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.ViewHolder> 
 
     }
 
-    public void filterList(ArrayList<Event> filteredList){
-        eventList= filteredList;
-        notifyDataSetChanged();
-    }
 }

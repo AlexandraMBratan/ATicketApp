@@ -16,6 +16,7 @@
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/activity_admin_events_list_page.xml" value="0.1" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/activity_admin_home_page.xml" value="0.1" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/activity_admin_nav_drawer.xml" value="0.22" />
+        <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/activity_admin_user_details_page.xml" value="0.22" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/activity_admin_users_list_page.xml" value="0.22" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/activity_forgot_password.xml" value="0.1" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
@@ -28,7 +29,7 @@
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/admin_drawer_header.xml" value="0.13858695652173914" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/design_row_concert_list_admin.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/design_row_event_list_admin.xml" value="0.16666666666666666" />
-        <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/design_row_user_list_admin.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/design_row_user_list_admin.xml" value="0.1" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/list_item.xml" value="0.1" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/user_drawer_header.xml" value="0.1" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/menu/admin_drawer_menu.xml" value="0.1796875" />
