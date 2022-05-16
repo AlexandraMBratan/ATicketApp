@@ -1,14 +1,27 @@
 package com.example.aticketapp;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.Toast;
 
 import com.example.aticketapp.databinding.ActivityAdminHomePageBinding;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,51 +29,74 @@ import java.util.List;
 public class AdminHomePageActivity extends AdminNavDrawerActivity {
 
     ActivityAdminHomePageBinding activityAdminHomePageBinding;
-    CardView cardConcertAdmin, cardFestivalAdmin,cardTeatruAdmin,cardSportAdmin;
+    FirebaseDatabase mDatabaseCat;
+    DatabaseReference mRefCat;
+    FirebaseStorage mStorageCat;
+    RecyclerView recyclerViewCat;
+    AdminCategoryAdapter adminCategoryAdapter;
+    List<Category> categoryAdminList;
+    //CardView cardConcertAdmin, cardFestivalAdmin,cardTeatruAdmin,cardSportAdmin;
+    CardView cardCategory;
+    Button addCategoryButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activityAdminHomePageBinding =  ActivityAdminHomePageBinding.inflate(getLayoutInflater());
+        activityAdminHomePageBinding = ActivityAdminHomePageBinding.inflate(getLayoutInflater());
         setContentView(activityAdminHomePageBinding.getRoot());
         setActionBarTitle("Home");
 
-        cardConcertAdmin = (CardView) findViewById(R.id.cardConcerteAdmin);
-        cardFestivalAdmin = (CardView) findViewById(R.id.cardFestivalAdmin);
-        cardTeatruAdmin = (CardView) findViewById(R.id.cardTeatruAdmin);
-        cardSportAdmin = (CardView) findViewById(R.id.cardSportAdmin);
+        mDatabaseCat = FirebaseDatabase.getInstance();
+        mRefCat = mDatabaseCat.getReference().child("Categorie");
+        mStorageCat = FirebaseStorage.getInstance();
 
-        cardConcertAdmin.setOnClickListener(new View.OnClickListener() {
+        recyclerViewCat = findViewById(R.id.categoryList_admin);
+        recyclerViewCat.setHasFixedSize(true);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(AdminHomePageActivity.this,2);
+        recyclerViewCat.setLayoutManager(gridLayoutManager);
+        //recyclerViewCat.setLayoutManager(new LinearLayoutManager(this));
+
+        categoryAdminList = new ArrayList<Category>();
+        adminCategoryAdapter = new AdminCategoryAdapter(AdminHomePageActivity.this,categoryAdminList);
+        recyclerViewCat.setAdapter(adminCategoryAdapter);
+
+        addCategoryButton = (Button) findViewById(R.id.addCategory);
+        cardCategory = (CardView) findViewById(R.id.cardCategorieAdmin);
+
+        mRefCat.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onClick(View view) {
-                Toast.makeText(AdminHomePageActivity.this, "Concerts Page", Toast.LENGTH_LONG).show();
-                startActivity(new Intent(AdminHomePageActivity.this,AdminConcertsListPageActivity.class));
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                Category category = snapshot.getValue(Category.class);
+                categoryAdminList.add(category);
+                adminCategoryAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
 
-        cardFestivalAdmin.setOnClickListener(new View.OnClickListener() {
+        addCategoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(AdminHomePageActivity.this, "Festivals Page", Toast.LENGTH_LONG).show();
-                //startActivity(new Intent(this,FestivalPageAdmin.class));
+                startActivity(new Intent(AdminHomePageActivity.this,AdminAddCategoryPageActivity.class));
             }
         });
-
-        cardTeatruAdmin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(AdminHomePageActivity.this, "Theatre Page", Toast.LENGTH_LONG).show();
-                //startActivity(new Intent(this,TheatrePageAdmin.class));
-            }
-        });
-
-        cardSportAdmin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(AdminHomePageActivity.this, "Sports Page", Toast.LENGTH_LONG).show();
-                //startActivity(new Intent(this,SportPageAdmin.class));
-            }
-        });
-
     }
 }

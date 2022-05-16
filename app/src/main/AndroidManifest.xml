@@ -13,10 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ATicketApp">
         <activity
+            android:name=".AdminAddCategoryPageActivity"
+            android:exported="false" />
+        <activity
             android:name=".AdminUserDetailsPageActivity"
             android:exported="false"
             android:parentActivityName=".AdminUsersListPageActivity"
-            android:theme="@style/UserDetails"/>
+            android:theme="@style/UserDetails" />
         <activity
             android:name=".AdminConcertsListPageActivity"
             android:exported="false" />
