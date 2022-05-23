@@ -51,18 +51,14 @@
             android:backgroundTint="#9372C3"
             android:textCursorDrawable="@drawable/text_cursor"/>
 
-        <EditText
-            android:id="@+id/typeEvent"
+        <Spinner
+            android:id="@+id/spinnerEventType"
             android:layout_width="380dp"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:hint="Tip eveniment"
+            android:layout_height="50dp"
+            android:padding="10dp"
             android:layout_marginTop="40dp"
-            android:textSize="25dp"
-            android:backgroundTint="#9372C3"
-            android:textCursorDrawable="@drawable/text_cursor"/>
-
-
+            android:backgroundTint="@color/purple_main"
+            />
 
         <EditText
             android:id="@+id/dateEvent"
@@ -118,6 +114,34 @@
             android:textSize="25dp"
             android:backgroundTint="#9372C3"
             android:textCursorDrawable="@drawable/text_cursor"/>
+
+        <EditText
+            android:id="@+id/descriptionEvent"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="Descriere"
+            android:layout_marginTop="40dp"
+            android:textSize="25dp"
+            android:backgroundTint="#9372C3"
+            android:textCursorDrawable="@drawable/text_cursor"/>
+
+       <com.google.android.material.textfield.TextInputLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:hint="Descriere"
+           android:backgroundTint="@color/purple_main"
+           android:layout_marginTop="40dp"
+           style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+           <com.google.android.material.textfield.TextInputEditText
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:inputType="textMultiLine"
+               android:lines="10"
+               android:gravity="top"
+               android:textSize="25dp"
+               android:textCursorDrawable="@drawable/text_cursor"/>
+       </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/addEvent"

@@ -16,6 +16,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 
 import com.example.aticketapp.databinding.ActivityAdminAddEventPageBinding;
 import com.example.aticketapp.databinding.ActivityAdminHomePageBinding;
@@ -23,19 +24,23 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdminAddEventPageActivity extends AdminNavDrawerActivity {
 
     ActivityAdminAddEventPageBinding activityAdminAddEventPageBinding;
     FirebaseDatabase mDatabase;
-    DatabaseReference mRef;
+    DatabaseReference mRef, mRefCategory;
     FirebaseStorage mStorage;
     ImageButton imageEventButton;
     EditText editNume, editArtist, editTip, editData, editOra, editLocatie, editPret, editCantitate;
@@ -43,8 +48,9 @@ public class AdminAddEventPageActivity extends AdminNavDrawerActivity {
     private static final int Gallery_Code=1;
     Uri imageUrl=null;
     ProgressDialog progressDialog;
-    //String[] items = {"Concert", "Festival", "Teatru", "Sport"};
-    //ArrayAdapter<String> adapter;
+    Spinner spinnerEventType;
+    ArrayList<String> categoryList;
+    ArrayAdapter<String> adapterSpiner;
 
  //AutoCompleteTextView typeEv;
 
@@ -64,19 +70,24 @@ public class AdminAddEventPageActivity extends AdminNavDrawerActivity {
 
         editNume = (EditText) findViewById(R.id.numeEvent);
         editArtist = (EditText) findViewById(R.id.artistEvent);
-        editTip = (EditText) findViewById(R.id.typeEvent);
+       // editTip = (EditText) findViewById(R.id.typeEvent);
         editData = (EditText) findViewById(R.id.dateEvent);
         editOra = (EditText) findViewById(R.id.timeEvent);
         editLocatie = (EditText) findViewById(R.id.locationEvent);
         editPret = (EditText) findViewById(R.id.priceEvent);
         editCantitate = (EditText) findViewById(R.id.totalQuantityEvent);
-//typeEv = (AutoCompleteTextView) findViewById(R.id.dropDown_field);
+        spinnerEventType = (Spinner) findViewById(R.id.spinnerEventType);
 
         butonAaugaEveniment = (Button) findViewById(R.id.addEvent);
 
         mDatabase = FirebaseDatabase.getInstance();
         mRef = mDatabase.getReference().child("Evenimente");
         mStorage = FirebaseStorage.getInstance();
+        mRefCategory = mDatabase.getReference().child("Categorie");
+
+        categoryList = new ArrayList<String>();
+        adapterSpiner = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, categoryList);
+        spinnerEventType.setAdapter(adapterSpiner);
 
         progressDialog = new ProgressDialog(this);
 
@@ -88,6 +99,8 @@ public class AdminAddEventPageActivity extends AdminNavDrawerActivity {
                 startActivityForResult(intent,Gallery_Code);
             }
         });
+
+        showSpinner();
     }
 
     @Override
@@ -104,13 +117,14 @@ public class AdminAddEventPageActivity extends AdminNavDrawerActivity {
             public void onClick(View view) {
                 String name = editNume.getText().toString().trim();
                 String artist = editArtist.getText().toString().trim();
-                String type = editTip.getText().toString().trim();
+                //String type = editTip.getText().toString().trim();
                 String date = editData.getText().toString().trim();
                 String time = editOra.getText().toString().trim();
                 String location = editLocatie.getText().toString().trim();
                 String price = editPret.getText().toString().trim();
                 String quantity = editCantitate.getText().toString().trim();
-                //String tipEven=typeEv.toString().trim();
+                String type = spinnerEventType.getSelectedItem().toString();
+
 
                 if(!(name.isEmpty() && artist.isEmpty() && type.isEmpty() && date.isEmpty()
                         && time.isEmpty() && location.isEmpty() && price.isEmpty() && quantity.isEmpty() && imageUrl!=null)){
@@ -143,6 +157,23 @@ public class AdminAddEventPageActivity extends AdminNavDrawerActivity {
                         }
                     });
                 }
+            }
+        });
+    }
+
+    private void showSpinner(){
+        mRefCategory.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot i : snapshot.getChildren()){
+                    categoryList.add(i.child("denumire").getValue(String.class));
+                }
+                adapterSpiner.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }

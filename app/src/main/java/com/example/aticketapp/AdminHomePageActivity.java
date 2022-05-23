@@ -38,6 +38,7 @@ public class AdminHomePageActivity extends AdminNavDrawerActivity {
     //CardView cardConcertAdmin, cardFestivalAdmin,cardTeatruAdmin,cardSportAdmin;
     CardView cardCategory;
     Button addCategoryButton;
+    private AdminCategoryAdapter.RecyclerViewInterfaceCategory recyclerViewInterfaceCategory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,11 +58,13 @@ public class AdminHomePageActivity extends AdminNavDrawerActivity {
         //recyclerViewCat.setLayoutManager(new LinearLayoutManager(this));
 
         categoryAdminList = new ArrayList<Category>();
-        adminCategoryAdapter = new AdminCategoryAdapter(AdminHomePageActivity.this,categoryAdminList);
+        adminCategoryAdapter = new AdminCategoryAdapter(AdminHomePageActivity.this,categoryAdminList, recyclerViewInterfaceCategory);
         recyclerViewCat.setAdapter(adminCategoryAdapter);
 
         addCategoryButton = (Button) findViewById(R.id.addCategory);
         cardCategory = (CardView) findViewById(R.id.cardCategorieAdmin);
+
+        //setOnClickListner();
 
         mRefCat.addChildEventListener(new ChildEventListener() {
             @Override
@@ -69,6 +72,7 @@ public class AdminHomePageActivity extends AdminNavDrawerActivity {
                 Category category = snapshot.getValue(Category.class);
                 categoryAdminList.add(category);
                 adminCategoryAdapter.notifyDataSetChanged();
+                //setOnClickListner();
             }
 
             @Override
@@ -92,6 +96,7 @@ public class AdminHomePageActivity extends AdminNavDrawerActivity {
             }
         });
 
+
         addCategoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,4 +104,17 @@ public class AdminHomePageActivity extends AdminNavDrawerActivity {
             }
         });
     }
+
+    private void setOnClickListner() {
+        recyclerViewInterfaceCategory = new AdminCategoryAdapter.RecyclerViewInterfaceCategory() {
+            @Override
+            public void onItemClick(View v, int position) {
+                //Intent i = new Intent(getApplicationContext(), AdminEventsPageActivity.class);
+                //i.putExtra("denumire", categoryAdminList.get(position).getDenumire());
+                //startActivity(i);
+                Toast.makeText(AdminHomePageActivity.this, "Test", Toast.LENGTH_SHORT).show();
+            }
+        };
+    }
+
 }
