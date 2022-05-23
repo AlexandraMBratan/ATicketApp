@@ -22,6 +22,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -41,7 +43,6 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.ViewHolder> 
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.design_row_event_list_admin,parent,false);
-        //design row conectivity
 
         return new ViewHolder(v);
     }
@@ -67,16 +68,29 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.ViewHolder> 
                 AlertDialog.Builder builder = new AlertDialog.Builder(holder.txtName.getContext());
                 builder.setTitle("Sunteti sigur ca doriti sa stergeti evenimentul?");
                 DatabaseReference refData = FirebaseDatabase.getInstance().getReference().child("Evenimente").child(event.getIdEvent());
+                FirebaseStorage mStorage = FirebaseStorage.getInstance();
+                StorageReference imageStorage = mStorage.getReferenceFromUrl(event.getImagine());
 
                 builder.setPositiveButton("Sterge", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         //deleteEvent(String idEvent);
-                        refData.removeValue();
-                        Toast.makeText(holder.txtName.getContext(), "Evenimentul s-a sters", Toast.LENGTH_LONG).show();
+                        imageStorage.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                refData.removeValue();
 
+                                Toast.makeText(holder.txtName.getContext(), "Evenimentul s-a sters", Toast.LENGTH_LONG).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(holder.txtName.getContext(), "Evenimentul NU s-a sters", Toast.LENGTH_LONG).show();
+                            }
+                        });
                     }
                 });
+
                 builder.setNegativeButton("Inchide", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
