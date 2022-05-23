@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ATicketApp">
         <activity
+            android:name=".AdminEventsPageActivity"
+            android:exported="false" />
+        <activity
             android:name=".AdminAddCategoryPageActivity"
             android:exported="false" />
         <activity
