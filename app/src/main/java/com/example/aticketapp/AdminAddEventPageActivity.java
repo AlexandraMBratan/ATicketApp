@@ -44,6 +44,7 @@ public class AdminAddEventPageActivity extends AdminNavDrawerActivity {
     FirebaseStorage mStorage;
     ImageButton imageEventButton;
     EditText editNume, editArtist, editTip, editData, editOra, editLocatie, editPret, editCantitate;
+    TextInputLayout editDescriere;
     Button butonAaugaEveniment;
     private static final int Gallery_Code=1;
     Uri imageUrl=null;
@@ -76,6 +77,7 @@ public class AdminAddEventPageActivity extends AdminNavDrawerActivity {
         editLocatie = (EditText) findViewById(R.id.locationEvent);
         editPret = (EditText) findViewById(R.id.priceEvent);
         editCantitate = (EditText) findViewById(R.id.totalQuantityEvent);
+        editDescriere = (TextInputLayout) findViewById(R.id.descriereEveniment);
         spinnerEventType = (Spinner) findViewById(R.id.spinnerEventType);
 
         butonAaugaEveniment = (Button) findViewById(R.id.addEvent);
@@ -86,7 +88,7 @@ public class AdminAddEventPageActivity extends AdminNavDrawerActivity {
         mRefCategory = mDatabase.getReference().child("Categorie");
 
         categoryList = new ArrayList<String>();
-        adapterSpiner = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, categoryList);
+        adapterSpiner = new ArrayAdapter<>(this, R.layout.spinner_category, categoryList);
         spinnerEventType.setAdapter(adapterSpiner);
 
         progressDialog = new ProgressDialog(this);
@@ -124,6 +126,7 @@ public class AdminAddEventPageActivity extends AdminNavDrawerActivity {
                 String price = editPret.getText().toString().trim();
                 String quantity = editCantitate.getText().toString().trim();
                 String type = spinnerEventType.getSelectedItem().toString();
+                String description = editDescriere.getEditText().getText().toString().trim();
 
 
                 if(!(name.isEmpty() && artist.isEmpty() && type.isEmpty() && date.isEmpty()
@@ -142,7 +145,7 @@ public class AdminAddEventPageActivity extends AdminNavDrawerActivity {
                                     String t = task.getResult().toString();
 
                                     String id = mRef.push().getKey();
-                                    Event newEvent = new Event(id,name,artist,type,date,time,location,price,quantity,task.getResult().toString());
+                                    Event newEvent = new Event(id,name,artist,type,date,time,location,price,quantity,description,task.getResult().toString());
 
                                     mRef.child(id).setValue(newEvent);
 

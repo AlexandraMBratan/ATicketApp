@@ -54,7 +54,7 @@
         <Spinner
             android:id="@+id/spinnerEventType"
             android:layout_width="380dp"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:padding="10dp"
             android:layout_marginTop="40dp"
             android:backgroundTint="@color/purple_main"
@@ -115,18 +115,8 @@
             android:backgroundTint="#9372C3"
             android:textCursorDrawable="@drawable/text_cursor"/>
 
-        <EditText
-            android:id="@+id/descriptionEvent"
-            android:layout_width="380dp"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:hint="Descriere"
-            android:layout_marginTop="40dp"
-            android:textSize="25dp"
-            android:backgroundTint="#9372C3"
-            android:textCursorDrawable="@drawable/text_cursor"/>
-
        <com.google.android.material.textfield.TextInputLayout
+           android:id="@+id/descriereEveniment"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:hint="Descriere"
