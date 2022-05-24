@@ -13,8 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ATicketApp">
         <activity
-            android:name=".AdminEventsPageActivity"
+            android:name=".AdminUpdateEventPageActivity"
             android:exported="false" />
+        <activity
+            android:name=".AdminEventsPageActivity"
+            android:exported="false"
+            android:parentActivityName=".AdminHomePageActivity"
+            android:theme="@style/Events"/>
         <activity
             android:name=".AdminAddCategoryPageActivity"
             android:exported="false" />

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,7 +21,6 @@ public class AdminEventsByCategoryAdapter extends RecyclerView.Adapter<AdminEven
     private Context context;
     private List<Event> eventsList;
     //private AdminEventsByCategoryAdapter.RecyclerViewInterface rvInterfaceEvByCat;
-
 
     public AdminEventsByCategoryAdapter(Context context, List<Event> eventsList) {
         this.context = context;
@@ -56,6 +56,11 @@ public class AdminEventsByCategoryAdapter extends RecyclerView.Adapter<AdminEven
         return eventsList.size();
     }
 
+    public void filterEventByCategoryList(List<Event> filteredEventList){
+        this.eventsList = filteredEventList;
+        notifyDataSetChanged();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         ImageView imageEvCat;
@@ -73,4 +78,5 @@ public class AdminEventsByCategoryAdapter extends RecyclerView.Adapter<AdminEven
 
         }
     }
+
 }
