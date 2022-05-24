@@ -2,6 +2,7 @@ package com.example.aticketapp;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,6 +62,26 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.ViewHolder> 
         String imageUri = null;
         imageUri =  event.getImagine();
         Picasso.get().load(imageUri).into(holder.imageEv);
+
+        holder.updateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(holder.txtName.getContext(), "Evenimentul va fi actualizat", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(holder.updateButton.getContext(), AdminUpdateEventPageActivity.class);
+                intent.putExtra("numeEveniment", event.getNumeEveniment());
+                intent.putExtra("artist", event.getArtist());
+                intent.putExtra("data", event.getData());
+                intent.putExtra("ora", event.getOra());
+                intent.putExtra("locatie", event.getLocatie());
+                intent.putExtra("pret", event.getPret());
+                intent.putExtra("cantitateTotala", event.getCantitateTotala());
+                intent.putExtra("descriere", event.getDescriere());
+                intent.putExtra("tip", event.getTip());
+                intent.putExtra("imagine", event.getImagine());
+                intent.putExtra("idEvent", event.getIdEvent());
+                holder.updateButton.getContext().startActivity(intent);
+            }
+        });
 
         holder.deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,6 +153,7 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.ViewHolder> 
 
            updateButton = (Button) itemView.findViewById(R.id.updateEventAdmin);
            deleteButton = (Button) itemView.findViewById(R.id.deleteEventAdmin);
+
         }
 
     }

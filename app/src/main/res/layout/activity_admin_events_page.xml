@@ -7,6 +7,16 @@
     tools:context=".AdminEventsPageActivity"
     android:orientation="vertical">
 
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchEventByCategory_admin"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="8dp"
+        app:queryHint="Cautare ..."
+        android:background="@drawable/search_view_style"
+        app:iconifiedByDefault="false">
+    </androidx.appcompat.widget.SearchView>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/events_by_category_admin"
         android:layout_width="match_parent"
