@@ -79,6 +79,7 @@ public class AdminEventsListPageActivity extends AdminNavDrawerActivity{
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Event event = snapshot.getValue(Event.class);
                 eventAdminList.add(event);
+                //recyclerView.setAdapter(adminAdapter);
                 adminAdapter.notifyDataSetChanged();
             }
 

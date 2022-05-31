@@ -48,7 +48,7 @@ public class UserCategoryAdapter extends RecyclerView.Adapter<UserCategoryAdapte
             @Override
             public void onClick(View view) {
                 //Context contextCat = view.getContext();
-                Intent i = new Intent(view.getContext(), AdminEventsPageActivity.class);
+                Intent i = new Intent(view.getContext(), UserEventsPageActivity.class);
                 i.putExtra("denumire", category.getDenumire());
                 context.startActivity(i);
                 Toast.makeText(context, "Test "+category.getDenumire(), Toast.LENGTH_SHORT).show();

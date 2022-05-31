@@ -25,12 +25,15 @@
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/activity_register_user.xml" value="0.1" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/activity_splash_screen.xml" value="0.1" />
+        <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/activity_user_event_details_page.xml" value="0.1" />
+        <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/activity_user_events_page.xml" value="0.1" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/activity_user_home_page.xml" value="0.1" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/activity_user_my_profile_page.xml" value="0.22" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/activity_user_nav_drawer.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/activity_user_update_profile_page.xml" value="0.22" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/admin_drawer_header.xml" value="0.13858695652173914" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/design_event_by_category_admin.xml" value="0.1" />
+        <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/design_event_by_category_user.xml" value="0.1" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/design_grid_category_admin.xml" value="0.1" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/design_grid_category_user.xml" value="0.1" />
         <entry key="..\:/Users/alebr/AndroidStudioProjects/ATicketApp/app/src/main/res/layout/design_row_concert_list_admin.xml" value="0.3333333333333333" />
