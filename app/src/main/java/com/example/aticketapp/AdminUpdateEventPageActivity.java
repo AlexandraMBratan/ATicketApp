@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -55,6 +56,7 @@ public class AdminUpdateEventPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_update_event_page);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.purple_main)));
 
         denumire = (EditText) findViewById(R.id.update_numeEvent);
         artist = (EditText) findViewById(R.id.update_artistEvent);
@@ -119,6 +121,9 @@ public class AdminUpdateEventPageActivity extends AppCompatActivity {
                 if(view.getId() == R.id.updateEventButton){
                     updateEvent();
                 }
+
+                Intent intent = new Intent(AdminUpdateEventPageActivity.this, AdminEventsListPageActivity.class);
+                startActivity(intent);
             }
         });
     }

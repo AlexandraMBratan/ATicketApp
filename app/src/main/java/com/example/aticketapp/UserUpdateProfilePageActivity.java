@@ -3,6 +3,7 @@ package com.example.aticketapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -88,7 +89,6 @@ public class UserUpdateProfilePageActivity extends AppCompatActivity implements 
             Toast.makeText(this, "Informatiile au fost actualizate!", Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(this, "Informatile nu pot fi actualizate!", Toast.LENGTH_LONG).show();
-
         }
     }
 
@@ -178,5 +178,8 @@ public class UserUpdateProfilePageActivity extends AppCompatActivity implements 
                 updateProfile();
                 break;
         }
+
+        Intent intent = new Intent(UserUpdateProfilePageActivity.this, UserMyProfilePageActivity.class);
+        startActivity(intent);
     }
 }

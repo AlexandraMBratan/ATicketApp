@@ -13,16 +13,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ATicketApp">
         <activity
+            android:name=".UserEventDetailsPageActivity"
+            android:exported="false"
+            android:parentActivityName=".UserEventsPageActivity"
+            android:theme="@style/Events"/>
+        <activity
+            android:name=".UserEventsPageActivity"
+            android:exported="false"
+            android:parentActivityName=".UserHomePageActivity"
+            android:theme="@style/Events"/>
+        <activity
             android:name=".AdminUpdateEventPageActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".AdminEventsListPageActivity"
+            android:theme="@style/Events" />
         <activity
             android:name=".AdminEventsPageActivity"
             android:exported="false"
             android:parentActivityName=".AdminHomePageActivity"
-            android:theme="@style/Events"/>
+            android:theme="@style/Events" />
         <activity
             android:name=".AdminAddCategoryPageActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".AdminHomePageActivity"
+            android:theme="@style/Events" />
         <activity
             android:name=".AdminUserDetailsPageActivity"
             android:exported="false"

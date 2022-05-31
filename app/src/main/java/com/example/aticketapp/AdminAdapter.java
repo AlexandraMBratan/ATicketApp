@@ -109,6 +109,9 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.ViewHolder> 
                                 Toast.makeText(holder.txtName.getContext(), "Evenimentul NU s-a sters", Toast.LENGTH_LONG).show();
                             }
                         });
+                        //Intent intent = new Intent(holder.deleteButton.getContext(), AdminEventsListPageActivity.class);
+                       // holder.deleteButton.getContext().startActivity(intent);
+                       // holder.deleteButton.getContext().finish();
                     }
                 });
 
