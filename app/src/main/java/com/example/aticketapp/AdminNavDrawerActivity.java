@@ -52,7 +52,6 @@ public class AdminNavDrawerActivity extends AppCompatActivity implements Navigat
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        //emailAdmin = (TextView) findViewById(R.id.emailAdmin);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if(user!=null){
             emailAdmin.setText(user.getEmail());

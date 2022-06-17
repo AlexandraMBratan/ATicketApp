@@ -32,7 +32,7 @@ public class UserMyProfilePageActivity extends UserNavDrawerActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityUserMyProfilePageBinding activityUserMyProfilePageBinding = ActivityUserMyProfilePageBinding.inflate(getLayoutInflater());;
+        ActivityUserMyProfilePageBinding activityUserMyProfilePageBinding = ActivityUserMyProfilePageBinding.inflate(getLayoutInflater());
         setContentView(activityUserMyProfilePageBinding.getRoot());
 
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -45,7 +45,6 @@ public class UserMyProfilePageActivity extends UserNavDrawerActivity {
         final TextView varstaTextView = (TextView) findViewById(R.id.textVarsta);
         final TextView postalTextView = (TextView) findViewById(R.id.textCodPostal);
         final TextView emailTextView = (TextView) findViewById(R.id.textEmail);
-        final TextView parolaTextView = (TextView) findViewById(R.id.textParola);
 
         updateButton = (Button) findViewById(R.id.updateButton);
 
@@ -53,15 +52,13 @@ public class UserMyProfilePageActivity extends UserNavDrawerActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User userProfile = snapshot.getValue(User.class);
-
                 if(userProfile !=null){
-                    String nume = userProfile.nume;
-                    String prenume = userProfile.prenume;
-                    String telefon = userProfile.telefon;
-                    String varsta = userProfile.varsta;
-                    String postal = userProfile.codPostal;
-                    String email = userProfile.email;
-                    String parola = userProfile.parola;
+                    String nume = userProfile.getNume();
+                    String prenume = userProfile.getPrenume();
+                    String telefon = userProfile.getTelefon();
+                    String varsta = userProfile.getVarsta();
+                    String postal = userProfile.getCodPostal();
+                    String email = userProfile.getEmail();
 
                     numeTextView.setText(nume);
                     prenumeTextView.setText(prenume);
@@ -69,10 +66,8 @@ public class UserMyProfilePageActivity extends UserNavDrawerActivity {
                     varstaTextView.setText(varsta);
                     postalTextView.setText(postal);
                     emailTextView.setText(email);
-                    parolaTextView.setText(parola);
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(UserMyProfilePageActivity.this, "Eroare",Toast.LENGTH_LONG).show();

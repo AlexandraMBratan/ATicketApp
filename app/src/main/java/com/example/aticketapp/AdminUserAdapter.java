@@ -43,17 +43,10 @@ public class AdminUserAdapter extends RecyclerView.Adapter<AdminUserAdapter.View
     public void onBindViewHolder(@NonNull AdminUserAdapter.ViewHolder holder, int position) {
 
         User user = userList.get(position);
-        if(!(user.getEmail().equals("admin@yahoo.com"))) {
-            holder.txtNumeUser.setText(user.getNume());
-            holder.txtPrenumeUser.setText(user.getPrenume());
-            holder.txtTelefon.setText(user.getTelefon());
-            holder.txtEmailUser.setText(user.getEmail());
-        }else{
-            holder.txtNumeUser.setText("admin");
-            holder.txtPrenumeUser.setText("admin");
-            holder.txtTelefon.setText("admin");
-            holder.txtEmailUser.setText("admin");
-        }
+        holder.txtNumeUser.setText(user.getNume());
+        holder.txtPrenumeUser.setText(user.getPrenume());
+        holder.txtTelefon.setText(user.getTelefon());
+        holder.txtEmailUser.setText(user.getEmail());
     }
 
     @Override

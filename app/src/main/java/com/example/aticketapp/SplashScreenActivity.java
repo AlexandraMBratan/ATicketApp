@@ -1,15 +1,12 @@
 package com.example.aticketapp;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
-
 public class SplashScreenActivity extends AppCompatActivity {
     private Handler handler = new Handler();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,17 +22,14 @@ public class SplashScreenActivity extends AppCompatActivity {
             }
         }
     };
-
     @Override
     protected void onResume() {
         super.onResume();
         handler.postDelayed(runnable,2000);
     }
-
     @Override
     protected void onPause() {
         super.onPause();
         handler.removeCallbacks(runnable);
     }
-
 }

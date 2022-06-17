@@ -22,12 +22,12 @@ import java.lang.ref.PhantomReference;
 
 public class UserUpdateProfilePageActivity extends AppCompatActivity implements View.OnClickListener{
 
-    TextInputLayout nume, prenume, varsta, telefon, codPostal, email, parola;
+    TextInputLayout nume, prenume, varsta, telefon, codPostal, email;
     private FirebaseUser user;
     private DatabaseReference referenceDatabase;
 
     private Button updateUser;
-    String user_nume, user_prenume, user_varsta, user_telefon, user_codPostal, user_email, user_parola;
+    String user_nume, user_prenume, user_varsta, user_telefon, user_codPostal, user_email;
     String userID;
 
     @Override
@@ -46,7 +46,6 @@ public class UserUpdateProfilePageActivity extends AppCompatActivity implements 
         telefon = findViewById(R.id.updateTelefon);
         codPostal = findViewById(R.id.updateCodPostal);
         email = findViewById(R.id.updateEmail);
-        parola = findViewById(R.id.updateParola);
 
         referenceDatabase.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -55,13 +54,12 @@ public class UserUpdateProfilePageActivity extends AppCompatActivity implements 
                 User userProfile = snapshot.getValue(User.class);
 
                 if (userProfile != null) {
-                    user_nume = userProfile.nume;
-                    user_prenume = userProfile.prenume;
-                    user_varsta = userProfile.varsta;
-                    user_telefon = userProfile.telefon;
-                    user_codPostal = userProfile.codPostal;
-                    user_email = userProfile.email;
-                    user_parola = userProfile.parola;
+                    user_nume = userProfile.getNume();
+                    user_prenume = userProfile.getPrenume();
+                    user_varsta = userProfile.getVarsta();
+                    user_telefon = userProfile.getTelefon();
+                    user_codPostal = userProfile.getCodPostal();
+                    user_email = userProfile.getEmail();
 
                     nume.getEditText().setText(user_nume);
                     prenume.getEditText().setText(user_prenume);
@@ -69,10 +67,9 @@ public class UserUpdateProfilePageActivity extends AppCompatActivity implements 
                     telefon.getEditText().setText(user_telefon);
                     codPostal.getEditText().setText(user_codPostal);
                     email.getEditText().setText(user_email);
-                    parola.getEditText().setText(user_parola);
+
                 }
             }
-
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -85,21 +82,10 @@ public class UserUpdateProfilePageActivity extends AppCompatActivity implements 
     }
 
     private void updateProfile() {
-        if (isNumeChanged() || isPrenumeChanged() || isVarstaChanged() || isTelefonChanged() || isCodPostalChanged() || isEmailChanged() || isParolaChanged()) {
+        if (isNumeChanged() || isPrenumeChanged() || isVarstaChanged() || isTelefonChanged() || isCodPostalChanged() || isEmailChanged()) {
             Toast.makeText(this, "Informatiile au fost actualizate!", Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(this, "Informatile nu pot fi actualizate!", Toast.LENGTH_LONG).show();
-        }
-    }
-
-    private boolean isParolaChanged() {
-        if (!user_parola.equals(parola.getEditText().getText().toString())) {
-            referenceDatabase.child(userID).child("parola").setValue(parola.getEditText().getText().toString());
-            user_parola = parola.getEditText().getText().toString();
-            return true;
-
-        } else {
-            return false;
         }
     }
 

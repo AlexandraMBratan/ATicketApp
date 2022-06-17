@@ -1,21 +1,20 @@
 package com.example.aticketapp;
 
 public class User {
-    public String nume, prenume, varsta, telefon, codPostal,email,parola;
-    public String esteAdmin;
+    private String nume, prenume, varsta, telefon, codPostal,email;
+    private String esteAdmin;
 
     public User(){
 
     }
 
-    public User(String nume,String prenume,String varsta,String telefon,String codPostal,String email,String parola){
+    public User(String nume,String prenume,String varsta,String telefon,String codPostal,String email){
         this.nume = nume;
         this.prenume = prenume;
         this.varsta = varsta;
         this.telefon = telefon;
         this.codPostal = codPostal;
         this.email = email;
-        this.parola = parola;
         esteAdmin = "false";
     }
 
@@ -65,14 +64,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getParola() {
-        return parola;
-    }
-
-    public void setParola(String parola) {
-        this.parola = parola;
     }
 
     public String getEsteAdmin(){

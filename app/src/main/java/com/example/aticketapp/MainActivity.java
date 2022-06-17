@@ -112,4 +112,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
     }
+
+    protected void onStart() {
+
+        super.onStart();
+
+        if(mAuth.getCurrentUser() != null){
+            Toast.makeText(MainActivity.this, "Utilizatorul este deja autentificat.", Toast.LENGTH_SHORT).show();
+            if(mAuth.getCurrentUser().getEmail().equals("admin@yahoo.com")){
+                startActivity(new Intent(MainActivity.this,AdminHomePageActivity.class));
+                finish();
+            }else{
+                startActivity(new Intent(MainActivity.this,UserHomePageActivity.class));
+                finish();
+            }
+        }else{
+            Toast.makeText(MainActivity.this, "Utilizatorul trebuie sa se autentifice!", Toast.LENGTH_SHORT).show();
+        }
+    }
 }

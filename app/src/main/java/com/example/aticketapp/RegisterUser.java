@@ -22,7 +22,6 @@ import java.util.Locale;
 
 public class RegisterUser extends AppCompatActivity implements View.OnClickListener{
     private FirebaseAuth mAuth;
-
     private EditText editTextSurname,editTextName, editTextAge,editTextPhone, editTextPostalCode, editTextEmail, editTextPassword;
     private TextView registerUser,login;
 
@@ -128,8 +127,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            User user = new User(surname,name,age,phone,postalCode,email,password);
-
+                            User user = new User(surname,name,age,phone,postalCode,email);
 
                             FirebaseDatabase.getInstance().getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
@@ -137,17 +135,17 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
-                                        Toast.makeText(RegisterUser.this, "User-ul a fost inregistrat cu succes", Toast.LENGTH_LONG).show();
-
-                                        //redirect to LoginLayout!
+                                        Toast.makeText(RegisterUser.this, "User-ul a fost inregistrat cu succes", Toast.LENGTH_LONG)
+                                                .show();
                                     }else{
-                                        Toast.makeText(RegisterUser.this, "Inregistrarea a esuat! Incercati din nou.", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(RegisterUser.this, "Inregistrarea a esuat! Incercati din nou.", Toast.LENGTH_LONG)
+                                                .show();
                                     }
                                 }
                             });
-
                         }else{
-                            Toast.makeText(RegisterUser.this, "Inregistrarea a esuat! Incercati din nou.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(RegisterUser.this, "Inregistrarea a esuat! Incercati din nou.", Toast.LENGTH_LONG)
+                                    .show();
                         }
                     }
                 });

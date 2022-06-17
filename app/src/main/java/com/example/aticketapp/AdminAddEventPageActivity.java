@@ -43,7 +43,7 @@ public class AdminAddEventPageActivity extends AdminNavDrawerActivity {
     DatabaseReference mRef, mRefCategory;
     FirebaseStorage mStorage;
     ImageButton imageEventButton;
-    EditText editNume, editArtist, editTip, editData, editOra, editLocatie, editPret, editCantitate;
+    EditText editNume, editArtist, editData, editOra, editLocatie, editPret, editCantitate;
     TextInputLayout editDescriere;
     Button butonAaugaEveniment;
     private static final int Gallery_Code=1;
@@ -53,8 +53,6 @@ public class AdminAddEventPageActivity extends AdminNavDrawerActivity {
     ArrayList<String> categoryList;
     ArrayAdapter<String> adapterSpiner;
 
- //AutoCompleteTextView typeEv;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,16 +60,10 @@ public class AdminAddEventPageActivity extends AdminNavDrawerActivity {
         setContentView(activityAdminAddEventPageBinding.getRoot());
         setActionBarTitle("Add event");
 
-       // adapter =new ArrayAdapter<String>(this,R.layout.list_item,items);
-        //typeEv.setAdapter(adapter);
-
-        //activityAdminAddEventPageBinding.dropDownField.setAdapter(adapter);
-
         imageEventButton = (ImageButton) findViewById(R.id.imageEvent);
 
         editNume = (EditText) findViewById(R.id.numeEvent);
         editArtist = (EditText) findViewById(R.id.artistEvent);
-       // editTip = (EditText) findViewById(R.id.typeEvent);
         editData = (EditText) findViewById(R.id.dateEvent);
         editOra = (EditText) findViewById(R.id.timeEvent);
         editLocatie = (EditText) findViewById(R.id.locationEvent);
@@ -119,7 +111,6 @@ public class AdminAddEventPageActivity extends AdminNavDrawerActivity {
             public void onClick(View view) {
                 String name = editNume.getText().toString().trim();
                 String artist = editArtist.getText().toString().trim();
-                //String type = editTip.getText().toString().trim();
                 String date = editData.getText().toString().trim();
                 String time = editOra.getText().toString().trim();
                 String location = editLocatie.getText().toString().trim();
@@ -139,13 +130,14 @@ public class AdminAddEventPageActivity extends AdminNavDrawerActivity {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                            Task<Uri> downloadUrl = taskSnapshot.getStorage().getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                            Task<Uri> downloadUrl = taskSnapshot.getStorage().getDownloadUrl().
+                                    addOnCompleteListener(new OnCompleteListener<Uri>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Uri> task) {
                                     String t = task.getResult().toString();
 
                                     String id = mRef.push().getKey();
-                                    Event newEvent = new Event(id,name,artist,type,date,time,location,price,quantity,description,task.getResult().toString());
+                                    Event newEvent = new Event(id,name,artist,type,date,time,location,price,quantity,description,t);
 
                                     mRef.child(id).setValue(newEvent);
 

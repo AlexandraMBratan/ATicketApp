@@ -24,16 +24,15 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 public class AdminAddCategoryPageActivity extends AppCompatActivity {
-
-    FirebaseDatabase mDatabaseCategory;
-    DatabaseReference mRefCategory;
-    FirebaseStorage mStorageCategory;
-    ImageButton imageCategoryButton;
-    EditText textCategorie;
-    Button butonAdaugaCategorie;
+    private FirebaseDatabase mDatabaseCategory;
+    private DatabaseReference mRefCategory;
+    private FirebaseStorage mStorageCategory;
+    private ImageButton imageCategoryButton;
+    private EditText textCategorie;
+    private Button butonAdaugaCategorie;
     private static final int Gallery_Code=1;
-    Uri imageCategoryUrl=null;
-    ProgressDialog progressDialog;
+    private Uri imageCategoryUrl=null;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +47,6 @@ public class AdminAddCategoryPageActivity extends AppCompatActivity {
         mDatabaseCategory = FirebaseDatabase.getInstance();
         mRefCategory = mDatabaseCategory.getReference().child("Categorie");
         mStorageCategory = FirebaseStorage.getInstance();
-
         progressDialog = new ProgressDialog(this);
 
         imageCategoryButton.setOnClickListener(new View.OnClickListener() {
@@ -74,12 +72,9 @@ public class AdminAddCategoryPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String denumire = textCategorie.getText().toString().trim();
-
-
                 if(!(denumire.isEmpty() && imageCategoryUrl!=null)){
                     progressDialog.setTitle("Se incarca ...");
                     progressDialog.show();
-
                     StorageReference filepath = mStorageCategory.getReference().child("imagePost").child(imageCategoryUrl.getLastPathSegment());
                     filepath.putFile(imageCategoryUrl).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -89,17 +84,12 @@ public class AdminAddCategoryPageActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Uri> task) {
                                     String t = task.getResult().toString();
-
                                     String idCategorie = mRefCategory.push().getKey();
                                     Category newCategory = new Category(idCategorie,denumire,task.getResult().toString());
-
                                     mRefCategory.child(idCategorie).setValue(newCategory);
-
                                     progressDialog.dismiss();
-
                                     Intent intent = new Intent(AdminAddCategoryPageActivity.this, AdminHomePageActivity.class);
                                     startActivity(intent);
-
                                 }
                             });
                         }
