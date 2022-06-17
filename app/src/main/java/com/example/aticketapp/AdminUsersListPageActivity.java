@@ -64,7 +64,7 @@ public class AdminUsersListPageActivity extends AdminNavDrawerActivity {
         searchUser.clearFocus();
         searchUser.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
 
-        mRef.addChildEventListener(new ChildEventListener() {
+        mRef.orderByChild("esteAdmin").equalTo("false").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 User user = snapshot.getValue(User.class);

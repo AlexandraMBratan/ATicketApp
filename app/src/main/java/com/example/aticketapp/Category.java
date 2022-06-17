@@ -1,7 +1,7 @@
 package com.example.aticketapp;
 
 public class Category {
-    public String idCategorie, denumire, imagineCategorie;
+    private String idCategorie, denumire, imagineCategorie;
 
     public Category(){
 

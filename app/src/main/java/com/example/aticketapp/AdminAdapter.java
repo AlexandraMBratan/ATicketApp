@@ -95,23 +95,8 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.ViewHolder> 
                 builder.setPositiveButton("Sterge", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        //deleteEvent(String idEvent);
-                        imageStorage.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void unused) {
-                                refData.removeValue();
-
-                                Toast.makeText(holder.txtName.getContext(), "Evenimentul s-a sters", Toast.LENGTH_LONG).show();
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(holder.txtName.getContext(), "Evenimentul NU s-a sters", Toast.LENGTH_LONG).show();
-                            }
-                        });
-                        //Intent intent = new Intent(holder.deleteButton.getContext(), AdminEventsListPageActivity.class);
-                       // holder.deleteButton.getContext().startActivity(intent);
-                       // holder.deleteButton.getContext().finish();
+                        refData.removeValue();
+                        Toast.makeText(holder.txtName.getContext(), "Evenimentul s-a sters", Toast.LENGTH_LONG).show();
                     }
                 });
 

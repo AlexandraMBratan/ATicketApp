@@ -74,9 +74,9 @@ public class UserNavDrawerActivity extends AppCompatActivity implements Navigati
                    // String prenume = userProfile.prenume;
                    // String email = userProfile.email;
 
-                    numeUser.setText(userProfile.nume);
-                    prenumeUser.setText(userProfile.prenume);
-                    emailUser.setText(userProfile.email);
+                    numeUser.setText(userProfile.getNume());
+                    prenumeUser.setText(userProfile.getPrenume());
+                    emailUser.setText(userProfile.getEmail());
                 }
             }
             @Override
@@ -95,9 +95,14 @@ public class UserNavDrawerActivity extends AppCompatActivity implements Navigati
                 startActivity(new Intent(this,UserHomePageActivity.class));
                 overridePendingTransition(0,0);
                 break;
+            case R.id.nav_myreservation_user:
+                Toast.makeText(UserNavDrawerActivity.this, "My Reservations - User", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(this,UserMyReservationsPageActivity.class));
+                overridePendingTransition(0,0);
+                break;
             case R.id.nav_myevents_user:
                 Toast.makeText(UserNavDrawerActivity.this, "My Events - User", Toast.LENGTH_LONG).show();
-                //startActivity(new Intent(this,AdminHomePageActivity.class));
+                startActivity(new Intent(this,UserMyPurchasesPageActivity.class));
                 overridePendingTransition(0,0);
                 break;
             case R.id.nav_profil_user:
