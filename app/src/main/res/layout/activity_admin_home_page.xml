@@ -12,14 +12,16 @@
     <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/categoryList_admin"/>
+            android:id="@+id/categoryList_admin"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"/>
 
     <Button
         android:id="@+id/addCategory"
         android:layout_width="250dp"
         android:layout_height="60dp"
         android:layout_gravity="center"
-
+        android:layout_marginTop="60dp"
         android:backgroundTint="#9372C3"
         android:text="Adauga categorie"
         android:textSize="18dp"

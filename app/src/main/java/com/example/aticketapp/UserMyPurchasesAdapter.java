@@ -1,9 +1,11 @@
 package com.example.aticketapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -44,9 +46,19 @@ public class UserMyPurchasesAdapter extends RecyclerView.Adapter<UserMyPurchases
         //holder.txtDateReservationUser.setText(event.getData());
         //holder.txtTimeReservationUser.setText(event.getOra());
 
+
         String imageUri = null;
         imageUri =  purchase.getImagineEveniment();
         Picasso.get().load(imageUri).into(holder.imageEvPurchaseUser);
+
+        holder.generateTicket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(holder.generateTicket.getContext(), QRCodeActivity.class);
+                intent.putExtra("numeEveniment", purchase.getNumeEveniment());
+                holder.generateTicket.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -63,6 +75,7 @@ public class UserMyPurchasesAdapter extends RecyclerView.Adapter<UserMyPurchases
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         ImageView imageEvPurchaseUser;
         TextView txtNamePurchaseUser, txtArtistPurchaseUser, txtLocationPurchaseUser, txtDatePurchaseUser, txtTimePurchaseUser;
+        Button generateTicket;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -73,6 +86,7 @@ public class UserMyPurchasesAdapter extends RecyclerView.Adapter<UserMyPurchases
             txtLocationPurchaseUser = itemView.findViewById(R.id.locatie_row_purchase_user);
             //txtDatePurchaseUser = itemView.findViewById(R.id.data_row_purchase_user);
             //txtTimePurchaseUser = itemView.findViewById(R.id.ora_row_purchase_user);
+            generateTicket = itemView.findViewById(R.id.generateTicketUser);
 
             itemView.setOnClickListener(this);
         }

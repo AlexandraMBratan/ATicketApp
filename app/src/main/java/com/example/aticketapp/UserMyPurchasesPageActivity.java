@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.text.InputType;
+import android.widget.Toast;
 
 import com.example.aticketapp.databinding.ActivityUserMyPurchasesPageBinding;
 import com.google.firebase.auth.FirebaseAuth;
@@ -57,12 +58,12 @@ public class UserMyPurchasesPageActivity extends UserNavDrawerActivity {
         recyclerViewPurchasesUser.setLayoutManager(new LinearLayoutManager(this));
 
         eventsMyPurchaseUserList = new ArrayList<Purchase>();
-        userMyPurchasesAdapter = new UserMyPurchasesAdapter(UserMyPurchasesPageActivity.this, eventsMyPurchaseUserList,listener);
+        userMyPurchasesAdapter = new UserMyPurchasesAdapter(UserMyPurchasesPageActivity.this, eventsMyPurchaseUserList, listener);
         recyclerViewPurchasesUser.setAdapter(userMyPurchasesAdapter);
 
         searchPurchase = findViewById(R.id.searchPurchases_user);
         searchPurchase.clearFocus();
-        searchPurchase.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+        searchPurchase.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
 
         mRefPurchase.orderByChild("idUser").equalTo(idUser).addChildEventListener(new ChildEventListener() {
             @Override
@@ -92,5 +93,42 @@ public class UserMyPurchasesPageActivity extends UserNavDrawerActivity {
 
             }
         });
+
+        searchPurchase.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterPurchases(newText);
+                return true;
+            }
+        });
+    }
+
+
+
+    private void filterPurchases(String text) {
+        List<Purchase> filteredEventList = new ArrayList<>();
+        for(Purchase itemPurchase : eventsMyPurchaseUserList){
+            if(itemPurchase.getNumeEveniment().toLowerCase().contains(text.toLowerCase())){
+                filteredEventList.add(itemPurchase);
+            }else {
+                if (itemPurchase.getArtistEveniment().toLowerCase().contains(text.toLowerCase())) {
+                    filteredEventList.add(itemPurchase);
+                }else{
+                    if(itemPurchase.getLocatieEveniment().toLowerCase().contains(text.toLowerCase())){
+                        filteredEventList.add(itemPurchase);
+                    }
+                }
+            }
+        }
+        if(filteredEventList.isEmpty()){
+            Toast.makeText(UserMyPurchasesPageActivity.this, "Nu a fost gasita achizitia", Toast.LENGTH_LONG).show();
+        }else {
+            userMyPurchasesAdapter.filterMyPurchasesList(filteredEventList);
+        }
     }
 }

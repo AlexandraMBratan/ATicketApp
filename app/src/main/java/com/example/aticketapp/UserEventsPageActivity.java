@@ -11,6 +11,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -93,6 +94,20 @@ public class UserEventsPageActivity extends AppCompatActivity {
             });
         }
 
+
+        searchEventByCategory.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterEventByCategory(newText);
+                return true;
+            }
+        });
+
     }
     private void setOnClickListner() {
         listener = new UserEventsByCategoryAdapter.RecyclerViewInterface() {
@@ -111,5 +126,27 @@ public class UserEventsPageActivity extends AppCompatActivity {
                 startActivity(i);
             }
         };
+    }
+
+    private void filterEventByCategory(String text) {
+        List<Event> filteredEventList = new ArrayList<>();
+        for(Event itemEvent : eventsByCategoryUserList){
+            if(itemEvent.getNumeEveniment().toLowerCase().contains(text.toLowerCase())){
+                filteredEventList.add(itemEvent);
+            }else {
+                if (itemEvent.getArtist().toLowerCase().contains(text.toLowerCase())) {
+                    filteredEventList.add(itemEvent);
+                }else{
+                    if(itemEvent.getLocatie().toLowerCase().contains(text.toLowerCase())){
+                        filteredEventList.add(itemEvent);
+                    }
+                }
+            }
+        }
+        if(filteredEventList.isEmpty()){
+            Toast.makeText(UserEventsPageActivity.this, "Nu a fost gasit utilizatorul", Toast.LENGTH_LONG).show();
+        }else {
+            userEventsByCategoryAdapter.filterEventByCategoryList(filteredEventList);
+        }
     }
 }

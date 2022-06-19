@@ -5,11 +5,10 @@ public class Event {
     public String idEvent,numeEveniment, artist, tip, data, ora, locatie, pret, cantitateTotala , descriere;
     public String imagine;
 
-    public Event(){
+    public Event(){ }
 
-    }
-
-    public Event(String idEvent ,String numeEveniment, String artist, String tip, String data, String ora, String locatie, String pret, String cantitateTotala, String descriere, String imagine) {
+    public Event(String idEvent ,String numeEveniment, String artist, String tip, String data, String ora, String locatie,
+                 String pret, String cantitateTotala, String descriere, String imagine) {
         this.idEvent = idEvent;
         this.numeEveniment = numeEveniment;
         this.artist = artist;

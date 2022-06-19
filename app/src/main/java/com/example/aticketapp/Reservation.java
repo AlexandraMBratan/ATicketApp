@@ -1,13 +1,14 @@
 package com.example.aticketapp;
 
 public class Reservation {
-    private String idRezervation, idEventRezervat, idUserRezervat, numeEvenimentRezervat, artistEvenimentRezervat, locatieEvenimentRezervat,imagineEvenimentRezervat, cantitateBileteRezervat , status, pretTotalRezervat;
+    private String idRezervation, idEventRezervat, idUserRezervat, numeEvenimentRezervat, artistEvenimentRezervat;
+    private String locatieEvenimentRezervat,imagineEvenimentRezervat, cantitateBileteRezervat , status, pretTotalRezervat;
+    private String descriereEvenimentRezervat, oraEvenimentRezervat, dataEvenimentRezervat, pretBiletEvenimentRezervat;
 
     public Reservation(){
-
     }
 
-    public Reservation(String idRezervation, String idEventRezervat, String idUserRezervat, String numeEvenimentRezervat, String artistEvenimentRezervat, String locatieEvenimentRezervat, String imagineEvenimentRezervat, String cantitateBileteRezervat, String status, String pretTotalRezervat) {
+    public Reservation(String idRezervation, String idEventRezervat, String idUserRezervat, String numeEvenimentRezervat, String artistEvenimentRezervat, String locatieEvenimentRezervat, String imagineEvenimentRezervat, String cantitateBileteRezervat, String status, String pretTotalRezervat, String descriereEvenimentRezervat, String oraEvenimentRezervat, String dataEvenimentRezervat, String pretBiletEvenimentRezervat) {
         this.idRezervation = idRezervation;
         this.idEventRezervat = idEventRezervat;
         this.idUserRezervat = idUserRezervat;
@@ -18,6 +19,10 @@ public class Reservation {
         this.cantitateBileteRezervat = cantitateBileteRezervat;
         this.status = status;
         this.pretTotalRezervat = pretTotalRezervat;
+        this.descriereEvenimentRezervat = descriereEvenimentRezervat;
+        this.oraEvenimentRezervat = oraEvenimentRezervat;
+        this.dataEvenimentRezervat = dataEvenimentRezervat;
+        this.pretBiletEvenimentRezervat = pretBiletEvenimentRezervat;
     }
 
     public String getIdRezervation() {
@@ -98,5 +103,37 @@ public class Reservation {
 
     public void setPretTotalRezervat(String pretTotalRezervat) {
         this.pretTotalRezervat = pretTotalRezervat;
+    }
+
+    public String getDescriereEvenimentRezervat() {
+        return descriereEvenimentRezervat;
+    }
+
+    public void setDescriereEvenimentRezervat(String descriereEvenimentRezervat) {
+        this.descriereEvenimentRezervat = descriereEvenimentRezervat;
+    }
+
+    public String getOraEvenimentRezervat() {
+        return oraEvenimentRezervat;
+    }
+
+    public void setOraEvenimentRezervat(String oraEvenimentRezervat) {
+        this.oraEvenimentRezervat = oraEvenimentRezervat;
+    }
+
+    public String getDataEvenimentRezervat() {
+        return dataEvenimentRezervat;
+    }
+
+    public void setDataEvenimentRezervat(String dataEvenimentRezervat) {
+        this.dataEvenimentRezervat = dataEvenimentRezervat;
+    }
+
+    public String getPretBiletEvenimentRezervat() {
+        return pretBiletEvenimentRezervat;
+    }
+
+    public void setPretBiletEvenimentRezervat(String pretBiletEvenimentRezervat) {
+        this.pretBiletEvenimentRezervat = pretBiletEvenimentRezervat;
     }
 }
