@@ -4,13 +4,85 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserPaymentPageActivity">
-<LinearLayout
+    tools:context=".UserPaymentPageActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Datele cardului"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <EditText
+        android:id="@+id/cardNo"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="Numar card"
+        android:layout_marginTop="70dp"
+        android:textSize="25dp"
+        android:backgroundTint="#9372C3"
+        android:layout_gravity="center"
+        android:textCursorDrawable="@drawable/text_cursor"/>
+
+    <EditText
+        android:id="@+id/cardHolder"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="Numele detinatorului"
+        android:layout_marginTop="40dp"
+        android:textSize="25dp"
+        android:backgroundTint="#9372C3"
+        android:layout_gravity="center"
+        android:textCursorDrawable="@drawable/text_cursor"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/expireDate"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#9372C3"
+            android:hint="Data expirarii"
+            android:inputType="text"
+            android:textCursorDrawable="@drawable/text_cursor"
+            android:textSize="25dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="                     " />
+
+        <EditText
+            android:id="@+id/cvv"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#9372C3"
+            android:hint="CVV"
+            android:inputType="number"
+            android:textCursorDrawable="@drawable/text_cursor"
+            android:textSize="25dp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:layout_marginLeft="20dp"
-    android:layout_marginTop="20dp">
+    android:layout_marginTop="40dp"
+        android:layout_gravity="center">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,7 +108,7 @@
         android:backgroundTint="#9372C3"
         android:text="Plateste"
         android:textSize="18dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="40dp"
         android:layout_gravity="center"
         />
 

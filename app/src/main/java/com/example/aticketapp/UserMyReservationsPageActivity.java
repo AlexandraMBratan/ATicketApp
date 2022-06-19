@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.InputType;
+import android.widget.Toast;
 
 import com.example.aticketapp.databinding.ActivityUserMyReservationsPageBinding;
 import com.google.firebase.auth.FirebaseAuth;
@@ -93,6 +94,41 @@ public class UserMyReservationsPageActivity extends UserNavDrawerActivity {
 
                 }
             });
+
+        searchReservation.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterEventByCategory(newText);
+                return true;
+            }
+        });
         }
 
+    private void filterEventByCategory(String text) {
+        List<Reservation> filteredEventList = new ArrayList<>();
+        for(Reservation reservation : eventsMyReservationUserList){
+            if(reservation.getNumeEvenimentRezervat().toLowerCase().contains(text.toLowerCase())){
+                filteredEventList.add(reservation);
+            }else {
+                if (reservation.getArtistEvenimentRezervat().toLowerCase().contains(text.toLowerCase())) {
+                    filteredEventList.add(reservation);
+                }else{
+                    if(reservation.getLocatieEvenimentRezervat().toLowerCase().contains(text.toLowerCase())){
+                        filteredEventList.add(reservation);
+                    }
+                }
+            }
+        }
+        if(filteredEventList.isEmpty()){
+            Toast.makeText(UserMyReservationsPageActivity.this, "Nu a fost gasita rezervarea", Toast.LENGTH_LONG).show();
+        }else {
+            userMyReservationsAdapter.filterMyReservationList(filteredEventList);
+        }
     }
+
+}

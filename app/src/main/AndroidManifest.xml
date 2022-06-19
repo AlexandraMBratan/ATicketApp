@@ -3,6 +3,7 @@
     package="com.example.aticketapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -13,10 +14,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ATicketApp">
         <activity
+            android:name=".UserUpdateReservationPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".QRCodeActivity"
+            android:exported="false"
+            android:parentActivityName=".UserMyPurchasesPageActivity"
+            android:theme="@style/Events" />
+        <activity
             android:name=".UserPaymentPageActivity"
             android:exported="false"
             android:parentActivityName=".UserEventDetailsPageActivity"
-            android:theme="@style/Events"/>
+            android:theme="@style/Events" />
         <activity
             android:name=".UserMyPurchasesPageActivity"
             android:exported="false" />

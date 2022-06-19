@@ -97,6 +97,8 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.ViewHolder> 
                     public void onClick(DialogInterface dialogInterface, int i) {
                         refData.removeValue();
                         Toast.makeText(holder.txtName.getContext(), "Evenimentul s-a sters", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(holder.deleteButton.getContext(), AdminEventsListPageActivity.class);
+                        holder.updateButton.getContext().startActivity(intent);
                     }
                 });
 

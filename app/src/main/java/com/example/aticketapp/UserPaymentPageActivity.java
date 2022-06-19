@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -19,6 +20,7 @@ public class UserPaymentPageActivity extends AppCompatActivity {
     String nameEvent, artistEvent, timeEvent, dateEvent, locationEvent, priceEvent, descriptionEvent, idEvent, imageEvent;
     String total, cantitateBilete;
     TextView sumaTotala;
+    EditText cardNo, cardHolder, expirationDate ,cvv;
     FirebaseDatabase mDatabasePurchase;
     DatabaseReference mRefPurchase;
     FirebaseUser user;
@@ -33,6 +35,10 @@ public class UserPaymentPageActivity extends AppCompatActivity {
 
         payTickets = (Button) findViewById(R.id.payTicketUser);
         sumaTotala = (TextView) findViewById(R.id.suma_totala_user) ;
+        cardNo = (EditText) findViewById(R.id.cardNo);
+        cardHolder = (EditText) findViewById(R.id.cardHolder);
+        cvv = (EditText) findViewById(R.id.cvv);
+        expirationDate = (EditText) findViewById(R.id.expireDate);
 
         nameEvent = getIntent().getStringExtra("numeEveniment");
         artistEvent = getIntent().getStringExtra("artist");
@@ -59,7 +65,7 @@ public class UserPaymentPageActivity extends AppCompatActivity {
                 String idUser = user.getUid();
                 String status = "achizitie";
 
-                Purchase newPuchase = new Purchase(idPurchase,idEvent,idUser,nameEvent,artistEvent,locationEvent,imageEvent,cantitateBilete,status,total);
+                Purchase newPuchase = new Purchase(idPurchase,idEvent,idUser,nameEvent,artistEvent,locationEvent,imageEvent,cantitateBilete,status,total, descriptionEvent,timeEvent,dateEvent,priceEvent);
 
                 mRefPurchase.child(idPurchase).setValue(newPuchase);
 
