@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.aticketapp.databinding.ActivityAdminAddEventPageBinding;
 import com.example.aticketapp.databinding.ActivityAdminHomePageBinding;
@@ -45,7 +46,9 @@ public class AdminAddEventPageActivity extends AdminNavDrawerActivity {
     ImageButton imageEventButton;
     EditText editNume, editArtist, editData, editOra, editLocatie, editPret, editCantitate;
     TextInputLayout editDescriere;
+    TextView data_ev;
     Button butonAaugaEveniment;
+    String date;
     private static final int Gallery_Code=1;
     Uri imageUrl=null;
     ProgressDialog progressDialog;
@@ -71,8 +74,12 @@ public class AdminAddEventPageActivity extends AdminNavDrawerActivity {
         editCantitate = (EditText) findViewById(R.id.totalQuantityEvent);
         editDescriere = (TextInputLayout) findViewById(R.id.descriereEveniment);
         spinnerEventType = (Spinner) findViewById(R.id.spinnerEventType);
+        data_ev = (TextView) findViewById(R.id.data_ev);
 
         butonAaugaEveniment = (Button) findViewById(R.id.addEvent);
+
+        date = getIntent().getStringExtra("dataEveniment");
+        data_ev.setText(date);
 
         mDatabase = FirebaseDatabase.getInstance();
         mRef = mDatabase.getReference().child("Evenimente");
@@ -111,7 +118,7 @@ public class AdminAddEventPageActivity extends AdminNavDrawerActivity {
             public void onClick(View view) {
                 String name = editNume.getText().toString().trim();
                 String artist = editArtist.getText().toString().trim();
-                String date = editData.getText().toString().trim();
+                //String date = editData.getText().toString().trim();
                 String time = editOra.getText().toString().trim();
                 String location = editLocatie.getText().toString().trim();
                 String price = editPret.getText().toString().trim();
