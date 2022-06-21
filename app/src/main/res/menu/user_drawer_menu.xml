@@ -9,6 +9,10 @@
             android:icon="@drawable/ic_home"
             android:title="Acasa" />
         <item
+            android:id="@+id/nav_closeevents_user"
+            android:icon="@drawable/ic_events"
+            android:title="Evenimente apropiate" />
+        <item
             android:id="@+id/nav_myreservation_user"
             android:icon="@drawable/ic_events"
             android:title="Rezervarile mele" />

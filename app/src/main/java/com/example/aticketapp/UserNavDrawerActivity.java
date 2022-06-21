@@ -95,6 +95,11 @@ public class UserNavDrawerActivity extends AppCompatActivity implements Navigati
                 startActivity(new Intent(this,UserHomePageActivity.class));
                 overridePendingTransition(0,0);
                 break;
+            case R.id.nav_closeevents_user:
+                Toast.makeText(UserNavDrawerActivity.this, "Close Events - User", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(this,UserCloseEventsActivity.class));
+                overridePendingTransition(0,0);
+                break;
             case R.id.nav_myreservation_user:
                 Toast.makeText(UserNavDrawerActivity.this, "My Reservations - User", Toast.LENGTH_LONG).show();
                 startActivity(new Intent(this,UserMyReservationsPageActivity.class));
