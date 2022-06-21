@@ -48,6 +48,13 @@ public class UserEventsByCategoryAdapter extends RecyclerView.Adapter<UserEvents
         imageUri =  event.getImagine();
         Picasso.get().load(imageUri).into(holder.imageEvCatUser);
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onItemClick(view, holder.getAbsoluteAdapterPosition());
+            }
+        });
+
     }
 
     @Override

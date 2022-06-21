@@ -137,7 +137,7 @@ public class AdminEventsListPageActivity extends AdminNavDrawerActivity{
             }
         }
         if(filteredEventList.isEmpty()){
-            Toast.makeText(AdminEventsListPageActivity.this, "Nu a fost gasit utilizatorul", Toast.LENGTH_LONG).show();
+            Toast.makeText(AdminEventsListPageActivity.this, "Nu a fost gasit evenimentul", Toast.LENGTH_LONG).show();
         }else {
             adminAdapter.filterEventList(filteredEventList);
         }

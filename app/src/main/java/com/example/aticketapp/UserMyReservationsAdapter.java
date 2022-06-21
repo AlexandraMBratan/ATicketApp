@@ -50,8 +50,8 @@ public class UserMyReservationsAdapter extends RecyclerView.Adapter<UserMyReserv
         holder.txtNameReservationUser.setText(reservation.getNumeEvenimentRezervat());
         holder.txtArtistReservationUser.setText(reservation.getArtistEvenimentRezervat());
         holder.txtLocationReservationUser.setText(reservation.getLocatieEvenimentRezervat());
-        //holder.txtDateReservationUser.setText(event.getData());
-        //holder.txtTimeReservationUser.setText(event.getOra());
+        holder.txtDateReservationUser.setText(reservation.getDataEvenimentRezervat());
+        holder.txtTimeReservationUser.setText(reservation.getOraEvenimentRezervat());
 
         String imageUri = null;
         imageUri =  reservation.getImagineEvenimentRezervat();
@@ -134,8 +134,8 @@ public class UserMyReservationsAdapter extends RecyclerView.Adapter<UserMyReserv
             txtNameReservationUser = itemView.findViewById(R.id.nume_row_reservation_user);
             txtArtistReservationUser = itemView.findViewById(R.id.artist_row_reservation_user);
             txtLocationReservationUser = itemView.findViewById(R.id.locatie_row_reservation_user);
-            //txtDateReservationUser = itemView.findViewById(R.id.data_row_reservation_user);
-            //txtTimeReservationUser = itemView.findViewById(R.id.ora_row_reservation_user);
+            txtDateReservationUser = itemView.findViewById(R.id.data_row_reservation_user);
+            txtTimeReservationUser = itemView.findViewById(R.id.ora_row_reservation_user);
 
             deleteReservationButton = itemView.findViewById(R.id.deleteReservationUser);
             updateRezervationButton = itemView.findViewById(R.id.updateReservationUser);

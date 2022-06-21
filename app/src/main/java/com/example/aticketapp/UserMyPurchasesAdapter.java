@@ -43,8 +43,8 @@ public class UserMyPurchasesAdapter extends RecyclerView.Adapter<UserMyPurchases
         holder.txtNamePurchaseUser.setText(purchase.getNumeEveniment());
         holder.txtArtistPurchaseUser.setText(purchase.getArtistEveniment());
         holder.txtLocationPurchaseUser.setText(purchase.getLocatieEveniment());
-        //holder.txtDateReservationUser.setText(event.getData());
-        //holder.txtTimeReservationUser.setText(event.getOra());
+        holder.txtDatePurchaseUser.setText(purchase.getDataEveniment());
+        holder.txtTimePurchaseUser.setText(purchase.getOraEveniment());
 
 
         String imageUri = null;
@@ -84,8 +84,8 @@ public class UserMyPurchasesAdapter extends RecyclerView.Adapter<UserMyPurchases
             txtNamePurchaseUser = itemView.findViewById(R.id.nume_row_purchase_user);
             txtArtistPurchaseUser = itemView.findViewById(R.id.artist_row_purchase_user);
             txtLocationPurchaseUser = itemView.findViewById(R.id.locatie_row_purchase_user);
-            //txtDatePurchaseUser = itemView.findViewById(R.id.data_row_purchase_user);
-            //txtTimePurchaseUser = itemView.findViewById(R.id.ora_row_purchase_user);
+            txtDatePurchaseUser = itemView.findViewById(R.id.data_row_purchase_user);
+            txtTimePurchaseUser = itemView.findViewById(R.id.ora_row_purchase_user);
             generateTicket = itemView.findViewById(R.id.generateTicketUser);
 
             itemView.setOnClickListener(this);
